@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-47:\\layout\\item_contact.xml",
+        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-50:\\layout\\item_contact.xml"
+    },
+    {
+        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-47:\\layout\\fragment_notifications.xml",
+        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-50:\\layout\\fragment_notifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-47:\\layout\\fragment_add_contact.xml",
+        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-50:\\layout\\fragment_add_contact.xml"
+    },
+    {
+        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-47:\\layout\\fragment_gallery.xml",
+        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-50:\\layout\\fragment_gallery.xml"
+    },
+    {
+        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-47:\\layout\\adapter_contacts.xml",
+        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-50:\\layout\\adapter_contacts.xml"
+    },
+    {
+        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-47:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-50:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_contacts.xml",
+        "source": "com.example.madcamp_week1.app-main-50:/layout/fragment_contacts.xml"
+    },
+    {
+        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-47:\\layout\\fragment_contacts.xml",
+        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-50:\\layout\\fragment_contacts.xml"
+    }
+]

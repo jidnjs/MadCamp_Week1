@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MadCamp _Week1</string>
+<!--    <string name="title_home">Home</string>-->
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_contacts">Contacts</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="title_extra">Extra</string>
+    <string name="dummy_string">dummy String</string>
+</resources>
