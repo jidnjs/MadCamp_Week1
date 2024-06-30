@@ -1,6 +1,8 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.kapt) // Add this line for KAPT
 }
 
 android {
@@ -39,6 +41,12 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.databinding.runtime)
+
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler) // Use kapt instead of annotationProcessor
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

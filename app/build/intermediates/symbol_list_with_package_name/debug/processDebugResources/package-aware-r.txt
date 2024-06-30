@@ -3210,7 +3210,6 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
-id action_contactsFragment_to_addContactFragment
 id action_container
 id action_context_bar
 id action_divider
@@ -3224,7 +3223,6 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
-id addContactFragment
 id alertTitle
 id aligned
 id all
@@ -3253,9 +3251,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
-id btnAddContact
 id buttonPanel
-id buttonSaveContact
 id cache_measures
 id callMeasure
 id cancel_button
@@ -3281,6 +3277,10 @@ id collapseActionView
 id compress
 id confirm_button
 id constraint
+id contactFragRecyclerView
+id contactName
+id contactPhoneNumber
+id contactRecyclerView
 id container
 id content
 id contentPanel
@@ -3294,6 +3294,7 @@ id currentState
 id custom
 id customPanel
 id cut
+id dataBinding
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3337,8 +3338,6 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id escape
-id etContactName
-id etContactPhone
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3364,6 +3363,7 @@ id ghost_view_holder
 id gone
 id graph
 id graph_wrap
+id groupName
 id group_divider
 id grouping
 id groups
@@ -3466,7 +3466,6 @@ id multiply
 id nav_controller_view_tag
 id nav_host_fragment_activity_main
 id nav_host_fragment_container
-id nav_view
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3474,9 +3473,7 @@ id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_contacts
-id navigation_gallery
 id navigation_header_container
-id navigation_notifications
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
@@ -3528,7 +3525,6 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
-id recyclerViewContacts
 id report_drawn
 id reverseSawtooth
 id right
@@ -3622,11 +3618,9 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id text_gallery
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
-id text_notifications
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -3652,9 +3646,6 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id tvContactName
-id tvContactPhoneNumber
-id tvTotalContact
 id unchecked
 id uniform
 id unlabeled
@@ -3794,7 +3785,8 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
-layout adapter_contacts
+layout contact_group_item
+layout contact_item
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3811,13 +3803,9 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout fragment_add_contact
 layout fragment_contacts
-layout fragment_gallery
-layout fragment_notifications
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
-layout item_contact
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

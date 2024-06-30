@@ -1,0 +1,5 @@
+com.example.madcamp_week1.test.app-core-1.6.1-0 C:\Users\jkang\.gradle\caches\transforms-4\b934e97dcf7d336b1a7693f1e1705417\transformed\core-1.6.1\res
+com.example.madcamp_week1.test.app-androidTest-1 C:\Users\jkang\AndroidStudioProjects\app\build\generated\res\resValues\androidTest\debug
+com.example.madcamp_week1.test.app-mergeDebugAndroidTestResources-2 C:\Users\jkang\AndroidStudioProjects\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.madcamp_week1.test.app-mergeDebugAndroidTestResources-3 C:\Users\jkang\AndroidStudioProjects\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.madcamp_week1.test.app-debugAndroidTest-4 C:\Users\jkang\AndroidStudioProjects\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
