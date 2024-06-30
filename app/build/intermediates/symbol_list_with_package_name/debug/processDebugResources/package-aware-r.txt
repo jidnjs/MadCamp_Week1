@@ -3203,6 +3203,7 @@ id accessibility_custom_action_9
 id actionDown
 id actionDownUp
 id actionUp
+id action_add_contact
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -3210,6 +3211,7 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
+id action_contactsFragment_to_addContactFragment
 id action_container
 id action_context_bar
 id action_divider
@@ -3251,7 +3253,9 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id buttonAddContact
 id buttonPanel
+id button_add_contact
 id cache_measures
 id callMeasure
 id cancel_button
@@ -3329,6 +3333,8 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editTextContactName
+id editTextContactPhoneNumber
 id edit_query
 id edit_text_id
 id elastic
@@ -3466,6 +3472,7 @@ id multiply
 id nav_controller_view_tag
 id nav_host_fragment_activity_main
 id nav_host_fragment_container
+id navigation_add_contact
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3803,6 +3810,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_add_contact
 layout fragment_contacts
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
@@ -3868,6 +3876,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu bottom_nav_menu
+menu toolbar_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation mobile_navigation

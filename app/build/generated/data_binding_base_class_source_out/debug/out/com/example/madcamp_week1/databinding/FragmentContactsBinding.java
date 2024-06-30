@@ -4,6 +4,7 @@ package com.example.madcamp_week1.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,11 +21,15 @@ public final class FragmentContactsBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final Button buttonAddContact;
+
+  @NonNull
   public final RecyclerView contactFragRecyclerView;
 
-  private FragmentContactsBinding(@NonNull LinearLayout rootView,
+  private FragmentContactsBinding(@NonNull LinearLayout rootView, @NonNull Button buttonAddContact,
       @NonNull RecyclerView contactFragRecyclerView) {
     this.rootView = rootView;
+    this.buttonAddContact = buttonAddContact;
     this.contactFragRecyclerView = contactFragRecyclerView;
   }
 
@@ -55,13 +60,20 @@ public final class FragmentContactsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.button_add_contact;
+      Button buttonAddContact = ViewBindings.findChildViewById(rootView, id);
+      if (buttonAddContact == null) {
+        break missingId;
+      }
+
       id = R.id.contactFragRecyclerView;
       RecyclerView contactFragRecyclerView = ViewBindings.findChildViewById(rootView, id);
       if (contactFragRecyclerView == null) {
         break missingId;
       }
 
-      return new FragmentContactsBinding((LinearLayout) rootView, contactFragRecyclerView);
+      return new FragmentContactsBinding((LinearLayout) rootView, buttonAddContact,
+          contactFragRecyclerView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

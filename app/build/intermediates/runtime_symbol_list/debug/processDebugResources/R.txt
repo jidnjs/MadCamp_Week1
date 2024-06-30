@@ -3202,6 +3202,7 @@ int id accessibility_custom_action_9 0x7f08002f
 int id actionDown 0x7f080030
 int id actionDownUp 0x7f080031
 int id actionUp 0x7f080032
+int id action_add_contact 0x7f080208
 int id action_bar 0x7f080033
 int id action_bar_activity_content 0x7f080034
 int id action_bar_container 0x7f080035
@@ -3209,6 +3210,7 @@ int id action_bar_root 0x7f080036
 int id action_bar_spinner 0x7f080037
 int id action_bar_subtitle 0x7f080038
 int id action_bar_title 0x7f080039
+int id action_contactsFragment_to_addContactFragment 0x7f080209
 int id action_container 0x7f08003a
 int id action_context_bar 0x7f08003b
 int id action_divider 0x7f08003c
@@ -3250,7 +3252,9 @@ int id bounce 0x7f08005f
 int id bounceBoth 0x7f080060
 int id bounceEnd 0x7f080061
 int id bounceStart 0x7f080062
+int id buttonAddContact 0x7f08020a
 int id buttonPanel 0x7f080063
+int id button_add_contact 0x7f08020f
 int id cache_measures 0x7f080064
 int id callMeasure 0x7f080065
 int id cancel_button 0x7f080066
@@ -3328,6 +3332,8 @@ int id easeInOut 0x7f0800ad
 int id easeOut 0x7f0800ae
 int id east 0x7f0800af
 int id edge 0x7f0800b0
+int id editTextContactName 0x7f08020b
+int id editTextContactPhoneNumber 0x7f08020c
 int id edit_query 0x7f0800b1
 int id edit_text_id 0x7f0800b2
 int id elastic 0x7f0800b3
@@ -3465,6 +3471,7 @@ int id multiply 0x7f080136
 int id nav_controller_view_tag 0x7f080137
 int id nav_host_fragment_activity_main 0x7f080138
 int id nav_host_fragment_container 0x7f080139
+int id navigation_add_contact 0x7f08020d
 int id navigation_bar_item_active_indicator_view 0x7f08013b
 int id navigation_bar_item_icon_container 0x7f08013c
 int id navigation_bar_item_icon_view 0x7f08013d
@@ -3802,6 +3809,7 @@ int layout design_navigation_menu 0x7f0b002b
 int layout design_navigation_menu_item 0x7f0b002c
 int layout design_text_input_end_icon 0x7f0b002d
 int layout design_text_input_start_icon 0x7f0b002e
+int layout fragment_add_contact 0x7f0b006f
 int layout fragment_contacts 0x7f0b002f
 int layout ime_base_split_test_activity 0x7f0b0030
 int layout ime_secondary_split_test_activity 0x7f0b0031
@@ -3867,6 +3875,7 @@ int layout select_dialog_multichoice_material 0x7f0b006c
 int layout select_dialog_singlechoice_material 0x7f0b006d
 int layout support_simple_spinner_dropdown_item 0x7f0b006e
 int menu bottom_nav_menu 0x7f0d0000
+int menu toolbar_menu 0x7f0d0001
 int mipmap ic_launcher 0x7f0e0000
 int mipmap ic_launcher_round 0x7f0e0001
 int navigation mobile_navigation 0x7f0f0000

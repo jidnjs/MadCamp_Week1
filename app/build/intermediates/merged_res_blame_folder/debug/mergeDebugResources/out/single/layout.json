@@ -4,19 +4,19 @@
         "source": "com.example.madcamp_week1.app-main-55:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-52:\\layout\\contact_item.xml",
-        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-55:\\layout\\contact_item.xml"
+        "merged": "com.example.madcamp_week1.app-mergeDebugResources-52:/layout/contact_item.xml",
+        "source": "com.example.madcamp_week1.app-main-55:/layout/contact_item.xml"
     },
     {
-        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-52:\\layout\\contact_group_item.xml",
-        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-55:\\layout\\contact_group_item.xml"
+        "merged": "com.example.madcamp_week1.app-mergeDebugResources-52:/layout/fragment_add_contact.xml",
+        "source": "com.example.madcamp_week1.app-main-55:/layout/fragment_add_contact.xml"
     },
     {
-        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-52:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-55:\\layout\\activity_main.xml"
+        "merged": "com.example.madcamp_week1.app-mergeDebugResources-52:/layout/fragment_contacts.xml",
+        "source": "com.example.madcamp_week1.app-main-55:/layout/fragment_contacts.xml"
     },
     {
-        "merged": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-mergeDebugResources-52:\\layout\\fragment_contacts.xml",
-        "source": "C:\\Users\\jkang\\.gradle\\daemon\\8.7\\com.example.madcamp_week1.app-main-55:\\layout\\fragment_contacts.xml"
+        "merged": "com.example.madcamp_week1.app-mergeDebugResources-52:/layout/contact_group_item.xml",
+        "source": "com.example.madcamp_week1.app-main-55:/layout/contact_group_item.xml"
     }
 ]
