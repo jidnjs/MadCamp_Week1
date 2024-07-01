@@ -49,6 +49,12 @@ class ContactFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        // Scroll to top when the fragment becomes visible
+        binding.contactFragmentRecyclerView.layoutManager?.scrollToPosition(0)
+    }
+
     private fun setupRecyclerView() {
         groupAdapter = GroupAdapter(myViewModel, requireActivity())
         binding.contactFragmentRecyclerView.apply {

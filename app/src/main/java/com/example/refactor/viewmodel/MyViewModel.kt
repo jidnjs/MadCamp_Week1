@@ -25,6 +25,16 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun getContactByContactId(contactId: Long): LiveData<Contact?> {
+        return contactDao.getContactByContactId(contactId)
+    }
+
+    fun updateContact(contact: Contact) {
+        viewModelScope.launch(Dispatchers.IO) {
+            contactDao.updateContact(contact)
+        }
+    }
+
     fun addGroup(group: Group) {
         viewModelScope.launch(Dispatchers.IO) {
             groupDao.insertGroup(group)
