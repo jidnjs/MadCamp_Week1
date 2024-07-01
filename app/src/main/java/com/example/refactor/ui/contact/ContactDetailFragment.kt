@@ -1,15 +1,18 @@
 package com.example.refactor.ui.contact
 
+// Import necessary libraries
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.refactor.R
 import com.example.refactor.data.entities.Contact
+import com.example.refactor.data.entities.Group
 import com.example.refactor.databinding.FragmentContactDetailBinding
 import com.example.refactor.ui.MyViewModel
 
@@ -17,13 +20,14 @@ class ContactDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentContactDetailBinding
     private lateinit var myViewModel: MyViewModel
+    private lateinit var currentContact: Contact
+    private var selectedGroups: List<Group> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentContactDetailBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true) // This enables the back button in the toolbar
         return binding.root
     }
 
@@ -34,11 +38,24 @@ class ContactDetailFragment : Fragment() {
 
         val contactId = arguments?.getLong("contactId") ?: return
 
-        myViewModel.getContactByContactId(contactId).observe(viewLifecycleOwner, Observer { contact ->
+        myViewModel.getContactByContactId(contactId).observe(viewLifecycleOwner) { contact ->
             if (contact != null) {
+                currentContact = contact
                 bindContactDetails(contact)
             }
-        })
+        }
+
+        setFragmentResultListener("requestKey") { key, bundle ->
+            @Suppress("UNCHECKED_CAST")
+            selectedGroups = bundle.getParcelableArrayList<Group>("selectedGroups") ?: emptyList()
+        }
+
+        binding.groupSelection.setOnClickListener {
+            val bundle = Bundle().apply {
+                putLong("contactId", currentContact.contactId)
+            }
+            findNavController().navigate(R.id.action_contactDetailFragment_to_groupSelectionFragment, bundle)
+        }
 
         binding.btnSave.setOnClickListener {
             saveContactDetails()
@@ -57,22 +74,19 @@ class ContactDetailFragment : Fragment() {
         val contactPhone = binding.editContactPhone.text.toString().toLongOrNull()
         if (contactName.isNotEmpty() && contactPhone != null) {
             val updatedContact = Contact(
-                contactId = arguments?.getLong("contactId") ?: 0L,
+                contactId = currentContact.contactId,
                 contactName = contactName,
-                contactPhoneNumber = contactPhone
-                // Update other contact details if needed
+                contactPhoneNumber = contactPhone,
+                groupIdList = selectedGroups.map { it.groupId } // Update with selected groups
             )
             myViewModel.updateContact(updatedContact)
+            updateGroupsWithContact()
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                findNavController().popBackStack() // Navigate back when the back button is pressed
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
+    private fun updateGroupsWithContact() {
+        val updatedGroups = selectedGroups.map { it.copy(contactIdList = it.contactIdList + currentContact.contactId) }
+        myViewModel.updateGroups(updatedGroups)
+        Toast.makeText(requireContext(), "Contact and groups updated", Toast.LENGTH_SHORT).show()
     }
 }

@@ -3,12 +3,16 @@ package com.example.refactor.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Visibility
 import com.example.refactor.R
 import com.example.refactor.data.entities.Group
 import com.example.refactor.databinding.ItemContactGroupBinding
@@ -30,7 +34,7 @@ class GroupAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == TYPE_ALL_CONTACTS) {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_all_contacts, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_contact_group, parent, false)
             AllContactsViewHolder(view)
         } else {
             val binding = ItemContactGroupBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -60,7 +64,9 @@ class GroupAdapter(
 
         fun bind(group: Group) {
             binding.contactGroupTextView.text = group.groupName
-            binding.contactGroupRecyclerView.visibility = if (isExpanded(group)) View.VISIBLE else View.GONE
+            val visibility: Int = if (isExpanded(group)) View.VISIBLE else View.GONE
+            binding.contactGroupRecyclerView.visibility = visibility
+            binding.groupDetails.visibility = visibility
             // Set up the nested recycler view for contacts
             val contactAdapter = ContactAdapter()
             binding.contactGroupRecyclerView.apply {
@@ -75,19 +81,26 @@ class GroupAdapter(
             binding.root.setOnClickListener {
                 toggleGroupExpansion(group)
             }
+
+            binding.groupDetails.setOnClickListener {
+                it.findNavController().navigate(R.id.action_contactFragment_to_groupDetailFragment)
+            }
         }
     }
 
     inner class AllContactsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val allContactsRecyclerView: RecyclerView = itemView.findViewById(R.id.all_contacts_recycler_view)
+        private val allContactsRecyclerView: RecyclerView = itemView.findViewById(R.id.contact_group_recycler_view)
+        private val allContactsTextView: TextView = itemView.findViewById(R.id.contact_group_text_view)
 
         fun bind() {
+            allContactsTextView.text = "All Contacts"
             val contactAdapter = ContactAdapter()
             allContactsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(itemView.context)
                 adapter = contactAdapter
             }
-            allContactsRecyclerView.visibility = if (expandedGroupId == Group.ALL_CONTACTS_ID) View.VISIBLE else View.GONE
+            val visibility = if (expandedGroupId == Group.ALL_CONTACTS_ID) View.VISIBLE else View.GONE
+            allContactsRecyclerView.visibility = visibility
 
             myViewModel.allContacts.observe(lifecycleOwner, Observer { contacts ->
                 contactAdapter.submitList(contacts)

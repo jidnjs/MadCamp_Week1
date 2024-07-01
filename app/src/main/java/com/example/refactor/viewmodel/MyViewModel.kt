@@ -41,8 +41,20 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun updateGroups(groupList: List<Group>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            groupList.map { groupDao.updateGroup(it) }
+        }
+    }
     // New method to get contacts by their IDs
     fun getContactListByContactIdList(contactIds: List<Long>): LiveData<List<Contact>> {
         return contactDao.getContactListByContactIdList(contactIds)
+    }
+
+    fun addContactToGroup(contact: Contact, group: Group) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val updatedContact = contact.copy(groupIdList = contact.groupIdList + group.groupId)
+            contactDao.updateContact(updatedContact)
+        }
     }
 }
