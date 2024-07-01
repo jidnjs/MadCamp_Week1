@@ -4,62 +4,56 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.refactor.R
+import com.example.refactor.data.AppDatabase
+import com.example.refactor.data.entities.Group
 import com.example.refactor.databinding.FragmentContactBinding
-import com.example.refactor.repository.Contact
-import com.example.refactor.repository.Group
-import com.example.refactor.viewmodel.GroupAdapter
+import com.example.refactor.ui.MyViewModel
+import com.example.refactor.ui.adapters.GroupAdapter
 
 class ContactFragment : Fragment() {
 
-    private var _binding: FragmentContactBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    private val groupList: List<Group> = getGroups()
-    private val contactList: List<Contact> = getContacts()
+    private lateinit var binding: FragmentContactBinding
+    private lateinit var groupAdapter: GroupAdapter
+    private lateinit var myViewModel: MyViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentContactBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+    ): View? {
+        binding = FragmentContactBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.contact_fragment_recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = GroupAdapter(groupList, contactList)
+        myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+
+        setupRecyclerView()
+
+        myViewModel.allGroups.observe(viewLifecycleOwner, Observer { groups ->
+            groupAdapter.submitList(groups)
+        })
+
+        binding.btnAddGroup.setOnClickListener {
+            AddGroupDialogFragment().show(parentFragmentManager, "AddGroupDialog")
+        }
+
+        binding.btnAddContact.setOnClickListener {
+            AddContactDialogFragment().show(parentFragmentManager, "AddContactDialog")
+        }
     }
 
-    private fun getGroups(): List<Group> {
-        // Sample data
-        return listOf(
-            Group(1, "Group 1", listOf(1, 2)),
-            Group(2, "Group 2", listOf(3, 4))
-        )
-    }
-
-    private fun getContacts(): List<Contact> {
-        // Sample data
-        return listOf(
-            Contact(1, "Contact 1", 1234567890),
-            Contact(2, "Contact 2", 2345678901),
-            Contact(3, "Contact 3", 3456789012),
-            Contact(4, "Contact 4", 4567890123)
-        )
+    private fun setupRecyclerView() {
+        groupAdapter = GroupAdapter(myViewModel, requireActivity())
+        binding.contactFragmentRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = groupAdapter
+        }
     }
 }

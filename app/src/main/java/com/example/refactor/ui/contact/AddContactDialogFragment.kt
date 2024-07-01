@@ -1,0 +1,48 @@
+package com.example.refactor.ui.contact
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.refactor.data.entities.Contact
+import com.example.refactor.databinding.FragmentAddContactBinding
+import com.example.refactor.ui.MyViewModel
+
+class AddContactDialogFragment : DialogFragment() {
+
+    private lateinit var binding: FragmentAddContactBinding
+    private lateinit var myViewModel: MyViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentAddContactBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+
+        binding.btnAdd.setOnClickListener {
+            val name = binding.editContactName.text.toString()
+            val phone = binding.editContactPhone.text.toString().toLongOrNull()
+            if (name.isNotEmpty() && phone != null) {
+                val contact = Contact(contactName = name, contactPhoneNumber = phone)
+                myViewModel.addContact(contact)
+                dismiss()
+            } else {
+                Toast.makeText(context, "Please enter valid details", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.btnCancel.setOnClickListener {
+            dismiss()
+        }
+    }
+}
