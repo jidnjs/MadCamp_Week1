@@ -1,14 +1,17 @@
 package com.example.refactor.ui.todo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.refactor.R
+import com.example.refactor.data.entities.Todo
 import com.example.refactor.ui.adapters.TodoAdapter
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -29,7 +32,11 @@ class TodoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_todo, container, false)
+        return view
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         calendarView = view.findViewById(R.id.calendarView)
         addTodoButton = view.findViewById(R.id.addTodoButton)
         recyclerView = view.findViewById(R.id.recyclerView)
@@ -37,6 +44,14 @@ class TodoFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         todoAdapter = TodoAdapter(listOf())
         recyclerView.adapter = todoAdapter
+
+        requireActivity().supportFragmentManager.setFragmentResultListener(
+            AddTodoDialogFragment.REQUEST_KEY,
+            this
+        ) { _, bundle ->
+            val newTodo = bundle.getSerializable(AddTodoDialogFragment.BUNDLE_KEY) as Todo
+            onTodoAdded(newTodo)
+        }
 
         calendarView.setOnDateChangedListener(OnDateSelectedListener { _, date, _ ->
             val calendar = Calendar.getInstance()
@@ -48,8 +63,6 @@ class TodoFragment : Fragment() {
             val addTodoDialog = AddTodoDialogFragment.newInstance(selectedDate)
             addTodoDialog.show(parentFragmentManager, "AddTodoDialogFragment")
         }
-
-        return view
     }
 
     override fun onResume() {
@@ -59,5 +72,11 @@ class TodoFragment : Fragment() {
         calendarView.setCurrentDate(today)   // Ensure the calendar shows today's month
         val calendar = Calendar.getInstance()
         selectedDate = calendar.time
+    }
+
+    private fun onTodoAdded(todo: Todo) {
+        // Handle the new Todo object here
+        // For example, add it to the database or update the UI
+        Toast.makeText(context, "New Todo added: ${todo.todoName}", Toast.LENGTH_SHORT).show()
     }
 }

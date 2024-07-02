@@ -1,24 +1,21 @@
 package com.example.refactor.ui.contact
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
-import com.example.refactor.R
 import com.example.refactor.data.entities.Contact
 import com.example.refactor.data.entities.Group
-import com.example.refactor.databinding.DialogGroupSelectionBinding
+import com.example.refactor.databinding.DialogSelectGroupsBinding
 import com.example.refactor.ui.MyViewModel
 
-class GroupSelectionDialogFragment : DialogFragment() {
+class SelectGroupsDialogFragment : DialogFragment() {
 
-    private lateinit var binding: DialogGroupSelectionBinding
+    private lateinit var binding: DialogSelectGroupsBinding
     private lateinit var myViewModel: MyViewModel
     private lateinit var allGroups: List<Group>
     private lateinit var listViewGroups: ListView
@@ -26,11 +23,17 @@ class GroupSelectionDialogFragment : DialogFragment() {
     private var contactId: Long = 0L
     private lateinit var selectedGroupIds: List<Long>
 
+    companion object {
+        private const val ARG_DEFAULT_DATE = "default_date"
+        const val REQUEST_KEY = "select_groups_request"
+        const val BUNDLE_KEY = "selected_group_id_list"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DialogGroupSelectionBinding.inflate(inflater, container, false)
+        binding = DialogSelectGroupsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -90,8 +93,8 @@ class GroupSelectionDialogFragment : DialogFragment() {
 
     private fun returnSelectedGroupsToContactDetailFragment(selectedGroups: List<Long>) {
         val result = Bundle().apply {
-            putLongArray("selectedGroupIdList", selectedGroups.toLongArray())
+            putLongArray(BUNDLE_KEY, selectedGroups.toLongArray())
         }
-        requireActivity().supportFragmentManager.setFragmentResult("GSkey", result)
+        requireActivity().supportFragmentManager.setFragmentResult(REQUEST_KEY, result)
     }
 }

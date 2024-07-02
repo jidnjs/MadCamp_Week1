@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.refactor.R
 import com.example.refactor.data.entities.Contact
-import com.example.refactor.data.entities.Group
 import com.example.refactor.databinding.FragmentContactDetailBinding
 import com.example.refactor.ui.MyViewModel
 
@@ -45,8 +42,8 @@ class ContactDetailFragment : Fragment() {
             }
         }
 
-        requireActivity().supportFragmentManager.setFragmentResultListener("GSkey", viewLifecycleOwner) { key, bundle ->
-            selectedGroups = bundle.getLongArray("selectedGroupIdList")?.toList() ?: emptyList()
+        requireActivity().supportFragmentManager.setFragmentResultListener(SelectGroupsDialogFragment.REQUEST_KEY, viewLifecycleOwner) { key, bundle ->
+            selectedGroups = bundle.getLongArray(SelectGroupsDialogFragment.BUNDLE_KEY)?.toList() ?: emptyList()
             Log.d("ContactDetailFrag", "selectedGroupIdList: $selectedGroups")
         }
 
@@ -54,9 +51,9 @@ class ContactDetailFragment : Fragment() {
             val bundle = Bundle().apply {
                 putLong("contactId", currentContact.contactId)
             }
-            val dialog = GroupSelectionDialogFragment()
+            val dialog = SelectGroupsDialogFragment()
             dialog.arguments = bundle
-            dialog.show(childFragmentManager, "GroupSelectionDialogFragment")
+            dialog.show(childFragmentManager, "SelectGroupsDialogFragment")
         }
 
         binding.btnSave.setOnClickListener {

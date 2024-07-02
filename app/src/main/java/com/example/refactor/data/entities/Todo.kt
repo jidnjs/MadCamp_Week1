@@ -1,6 +1,8 @@
 package com.example.refactor.data.entities
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.io.Serializable
 import java.util.Date
 
 @Entity(tableName = "Todo")
@@ -12,4 +14,4 @@ data class Todo(
     val forallDay: Boolean = false,
 
     val groupId: Long // group id
-)
+): Serializable

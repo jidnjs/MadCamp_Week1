@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.refactor.data.entities.Contact
@@ -31,13 +32,13 @@ class AddContactDialogFragment : DialogFragment() {
 
         binding.btnAdd.setOnClickListener {
             val name = binding.editContactName.text.toString()
-            val phone = binding.editContactPhone.text.toString().toLongOrNull()
-            if (name.isNotEmpty() && phone != null) {
-                val contact = Contact(contactName = name, contactPhoneNumber = phone)
+            val phone = binding.editContactPhone.text.toString()
+            if (name.isNotEmpty() && phone.isNotEmpty() && phone.isDigitsOnly()) {
+                val contact = Contact(contactName = name, contactPhoneNumber = phone.toLong())
                 myViewModel.addContact(contact)
                 dismiss()
             } else {
-                Toast.makeText(context, "Please enter valid details", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Please enter valid contact", Toast.LENGTH_SHORT).show()
             }
         }
 

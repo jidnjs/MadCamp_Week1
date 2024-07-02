@@ -1,20 +1,33 @@
 package com.example.refactor.ui.todo
 
 import android.app.DatePickerDialog
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.os.trace
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.refactor.R
+import com.example.refactor.data.entities.Group
 import com.example.refactor.data.entities.Todo
-import java.util.*
+import com.example.refactor.ui.MyViewModel
+import java.util.Calendar
+import java.util.Date
 
 class AddTodoDialogFragment : DialogFragment() {
 
+    private lateinit var myViewModel: MyViewModel
+    private lateinit var allGroups: List<Group>
+
     companion object {
         private const val ARG_DEFAULT_DATE = "default_date"
+        const val REQUEST_KEY = "add_todo_request"
+        const val BUNDLE_KEY = "new_todo"
+        private const val TIME_PICKER_INTERVAL = 5
 
         fun newInstance(defaultDate: Date?): AddTodoDialogFragment {
             val fragment = AddTodoDialogFragment()
@@ -40,14 +53,25 @@ class AddTodoDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.dialog_add_todo, container, false)
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        myViewModel = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
+
         val todoName = view.findViewById<EditText>(R.id.todoName)
         val todoContent = view.findViewById<EditText>(R.id.todoContent)
         val todoDay = view.findViewById<EditText>(R.id.todoDay)
         val timePicker = view.findViewById<TimePicker>(R.id.timePicker)
         val groupSpinner = view.findViewById<Spinner>(R.id.groupSpinner)
         val saveButton = view.findViewById<Button>(R.id.saveButton)
-
-        timePicker.setIs24HourView(true)
+        setTimePickerInterval(timePicker)
+        myViewModel.allGroups.observe(viewLifecycleOwner) { groups ->
+            allGroups = groups
+            setupGroupSpinner(groupSpinner!!)
+        }
 
         defaultDate?.let {
             val calendar = Calendar.getInstance()
@@ -63,25 +87,66 @@ class AddTodoDialogFragment : DialogFragment() {
         }
 
         saveButton.setOnClickListener {
+            val name = todoName.text.toString()
+            val content = todoContent.text.toString()
+
+            if (name.isBlank()) {
+                Toast.makeText(requireContext(), "Please enter valid name", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val calendar = Calendar.getInstance()
             calendar.time = defaultDate ?: Date()
             calendar.set(Calendar.HOUR_OF_DAY, timePicker.hour)
             calendar.set(Calendar.MINUTE, timePicker.minute)
 
             val newTodo = Todo(
-                todoName = todoName.text.toString(),
-                todoContent = todoContent.text.toString(),
+                todoName = name,
+                todoContent = content,
                 todoDate = calendar.time,
                 forallDay = false,
-//                groupName = groupSpinner.selectedItem.toString()
-                groupId = 1
+                groupId = allGroups[groupSpinner.selectedItemPosition].groupId
             )
 
-            // Save the newTodo object to the database or update the list
+            returnTodoToParentFragment(newTodo)
             dismiss()
         }
+    }
 
-        return view
+    private fun setupGroupSpinner(groupSpinner: Spinner) {
+        val groupNames = allGroups.map { it.groupName }
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, groupNames).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+        groupSpinner.adapter = adapter
+    }
+
+    private fun returnTodoToParentFragment(todo: Todo) {
+        val result = Bundle().apply {
+            putSerializable(BUNDLE_KEY, todo)
+        }
+        requireActivity().supportFragmentManager.setFragmentResult(REQUEST_KEY, result)
+    }
+
+    private fun setTimePickerInterval(timePicker: TimePicker) {
+        try {
+            val minutePicker = timePicker.findViewById<View>(
+                Resources.getSystem().getIdentifier(
+                    "minute", "id", "android"
+                )
+            ) as NumberPicker
+            minutePicker.minValue = 0
+            minutePicker.maxValue = 60 / TIME_PICKER_INTERVAL - 1
+            val displayedValues: MutableList<String> = ArrayList()
+            var i = 0
+            while (i < 60) {
+                displayedValues.add(String.format("%02d", i))
+                i += TIME_PICKER_INTERVAL
+            }
+            minutePicker.displayedValues = displayedValues.toTypedArray<String>()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onStart() {
