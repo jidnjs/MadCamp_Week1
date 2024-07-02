@@ -36,6 +36,8 @@ class GroupDetailFragment : Fragment() {
         val groupId = arguments?.getLong("groupId")
         val groupName = arguments?.getString("groupName")
 
+        binding.groupDetailsTitle.text = groupName
+
         binding.removeGroupButton.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Delete $groupName group")

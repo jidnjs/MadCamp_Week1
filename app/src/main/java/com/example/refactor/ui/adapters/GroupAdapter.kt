@@ -1,6 +1,7 @@
 package com.example.refactor.ui.adapters
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,12 +28,16 @@ class GroupAdapter(
     private val TYPE_ALL_CONTACTS = 0
     private val TYPE_GROUP = 1
 
-    private var expandedGroupId: Long? = -1L
+    private val DEFAULT_EXPANSION = -1L
+    private val ALL_CONTACTS_ID = -2L
+
+    private var expandedGroupId: Long? = DEFAULT_EXPANSION
 
     init{
-        myViewModel.newGroupId.observe(lifecycleOwner, Observer { newGroupId ->
-            expandedGroupId = newGroupId
-            notifyDataSetChanged()
+        myViewModel.addedGroupId.observe(lifecycleOwner, Observer { groupId ->
+            expandedGroupId = groupId
+            Log.d("GroupAdapter", "expanding..: $groupId")
+            this.notifyDataSetChanged()
         })
     }
 
@@ -111,7 +116,7 @@ class GroupAdapter(
                 layoutManager = LinearLayoutManager(itemView.context)
                 adapter = contactAdapter
             }
-            val visibility = if (expandedGroupId == Group.ALL_CONTACTS_ID) View.VISIBLE else View.GONE
+            val visibility = if (expandedGroupId == ALL_CONTACTS_ID) View.VISIBLE else View.GONE
             allContactsRecyclerView.visibility = visibility
 
             myViewModel.allContacts.observe(lifecycleOwner, Observer { contacts ->
@@ -119,20 +124,16 @@ class GroupAdapter(
             })
 
             itemView.setOnClickListener {
-                toggleAllContactsExpansion()
+                val isExpanded = expandedGroupId == ALL_CONTACTS_ID
+                expandedGroupId = if (isExpanded) DEFAULT_EXPANSION else ALL_CONTACTS_ID
+                notifyDataSetChanged()
             }
-        }
-
-        private fun toggleAllContactsExpansion() {
-            val isExpanded = expandedGroupId == Group.ALL_CONTACTS_ID
-            expandedGroupId = if (isExpanded) -1L else Group.ALL_CONTACTS_ID
-            notifyDataSetChanged()
         }
     }
 
     private fun toggleGroupExpansion(group: Group) {
         if (isExpanded(group)) {
-            expandedGroupId = -1L
+            expandedGroupId = DEFAULT_EXPANSION
         } else {
             expandedGroupId = group.groupId
         }

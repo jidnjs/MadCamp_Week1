@@ -23,14 +23,14 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
     val allGroups: LiveData<List<Group>> = groupDao.getAllGroups()
     val allTodos: LiveData<List<Todo>> = todoDao.getAllTodos()
 
-    private val _newGroupId = MutableLiveData<Long>()
-    val newGroupId: LiveData<Long> get() = _newGroupId
+    private val _addedGroupId = MutableLiveData<Long>()
+    val addedGroupId: LiveData<Long> get() = _addedGroupId
 
     fun addGroup(group: Group) {
         viewModelScope.launch(Dispatchers.IO) {
             groupDao.insertGroup(group)
-            _newGroupId.postValue(group.groupId)
         }
+        _addedGroupId.value = group.groupId
     }
 
     fun deleteGroup(groupId: Long) {

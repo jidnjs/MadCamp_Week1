@@ -38,6 +38,7 @@ class ContactFragment : Fragment() {
 
         myViewModel.allGroups.observe(viewLifecycleOwner, Observer { groups ->
             groupAdapter.submitList(groups)
+            groupAdapter.notifyDataSetChanged()
         })
 
         binding.btnAddGroup.setOnClickListener {

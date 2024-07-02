@@ -11,8 +11,4 @@ data class Group(
     @PrimaryKey(autoGenerate = true) val groupId: Long = 0,
     val groupName: String,
     val contactIdList: List<Long> = listOf()
-) {
-    companion object {
-        const val ALL_CONTACTS_ID = -2L
-    }
-}
+)

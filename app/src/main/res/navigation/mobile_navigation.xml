@@ -7,6 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_contact"
+        android:label="@string/title_contact"
         android:name="com.example.refactor.ui.contact.ContactFragment"
         tools:layout="@layout/fragment_contact">
         <action
@@ -19,6 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_contact_detail"
+        android:label="@string/title_contact_detail"
         android:name="com.example.refactor.ui.contact.ContactDetailFragment"
         tools:layout="@layout/fragment_contact_detail">
         <action
@@ -36,6 +38,7 @@
 
     <fragment
         android:id="@+id/navigation_group_detail"
+        android:label="@string/title_group_detail"
         android:name="com.example.refactor.ui.contact.GroupDetailFragment"
         tools:layout="@layout/fragment_group_detail"/>
 
@@ -46,8 +49,8 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.refactor.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_todo"
+        android:name="com.example.refactor.ui.todo.TodoFragment"
+        android:label="@string/title_todo"
+        tools:layout="@layout/fragment_todo" />
 </navigation>
