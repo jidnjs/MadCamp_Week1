@@ -1,37 +1,63 @@
-package com.example.refactor.ui.adapters
+package com.example.todo.ui.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.refactor.R
 import com.example.refactor.data.entities.Todo
+import com.example.refactor.databinding.ItemTodoBinding
+import com.example.refactor.R
+import com.example.refactor.ui.MyViewModel
+import java.text.SimpleDateFormat
 
-class TodoAdapter(private var todoList: List<Todo>) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
-
-    class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val todoName: TextView = itemView.findViewById(R.id.todoName)
-        val todoContent: TextView = itemView.findViewById(R.id.todoContent)
-        val todoDate: TextView = itemView.findViewById(R.id.todoDate)
-    }
+class TodoAdapter(
+    private val myViewModel: MyViewModel,
+    private val lifecycleOwner: LifecycleOwner
+) : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(TodoDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_todo, parent, false)
-        return TodoViewHolder(view)
+        val binding = ItemTodoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TodoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        val todo = todoList[position]
-        holder.todoName.text = todo.todoName
-        holder.todoContent.text = todo.todoContent
-        holder.todoDate.text = todo.todoDate.toString() // Format date as needed
+        val todo = getItem(position)
+        holder.bind(todo)
     }
 
-    override fun getItemCount() = todoList.size
+    inner class TodoViewHolder(private val binding: ItemTodoBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    fun updateTodoList(newTodoList: List<Todo>) {
-        todoList = newTodoList
-        notifyDataSetChanged()
+        fun bind(todo: Todo) {
+            myViewModel.getGroupByGroupId(todo.groupId).observe(lifecycleOwner, Observer{ group ->
+                binding.tvGroupName.text = "${group!!.groupName}"
+            })
+            binding.tvTodoName.text = todo.todoName
+            val dayFormat = SimpleDateFormat("yyyy-MM-dd")
+            val timeFormat = SimpleDateFormat("HH:mm")
+            binding.tvTodoDay.text = "${dayFormat.format(todo.todoDate)}"
+            binding.tvTodoTime.text = "${timeFormat.format(todo.todoDate)}"
+            binding.tvTodoContent.text = todo.todoContent
+        }
+    }
+
+    fun deleteItem(position: Int) {
+        val todo = getItem(position)
+        myViewModel.deleteTodo(todo)
+    }
+}
+
+class TodoDiffCallback : DiffUtil.ItemCallback<Todo>() {
+    override fun areItemsTheSame(oldItem: Todo, newItem: Todo): Boolean {
+        return oldItem.todoId == newItem.todoId
+    }
+
+    override fun areContentsTheSame(oldItem: Todo, newItem: Todo): Boolean {
+        return oldItem == newItem
     }
 }

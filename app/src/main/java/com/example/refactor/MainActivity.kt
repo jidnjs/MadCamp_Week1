@@ -35,6 +35,27 @@ class MainActivity : AppCompatActivity() {
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_contact -> {
+                    navController.navigate(R.id.navigation_contact)
+                    true
+                }
+
+                R.id.navigation_dashboard -> {
+                    navController.navigate(R.id.navigation_dashboard)
+                    true
+                }
+
+                R.id.navigation_todo -> {
+                    navController.navigate(R.id.navigation_todo)
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)

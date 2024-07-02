@@ -53,7 +53,7 @@
         android:id="@+id/remove_group_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remove Group"
+        android:text="Delete Group"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         android:backgroundTint="@android:color/holo_red_light"

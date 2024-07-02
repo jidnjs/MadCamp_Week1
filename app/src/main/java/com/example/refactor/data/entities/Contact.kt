@@ -10,5 +10,8 @@ data class Contact(
     val contactName: String,
     val contactPhoneNumber: Long = -1,
 
+    val contactEmail: String = "",
+    val contactMemo: String = "",
+
     val groupIdList: List<Long> = listOf() // Foreign key reference to Group
 )

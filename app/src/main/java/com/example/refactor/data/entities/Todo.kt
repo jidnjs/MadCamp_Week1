@@ -11,7 +11,6 @@ data class Todo(
     val todoName: String,
     val todoContent: String = "",
     val todoDate: Date,
-    val forallDay: Boolean = false,
 
     val groupId: Long // group id
 ): Serializable

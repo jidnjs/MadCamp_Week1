@@ -19,6 +19,7 @@ import com.example.refactor.R
 import com.example.refactor.data.entities.Group
 import com.example.refactor.databinding.ItemContactGroupBinding
 import com.example.refactor.ui.MyViewModel
+import com.example.refactor.ui.decorators.ContactItemDecorator
 
 class GroupAdapter(
     private val myViewModel: MyViewModel,
@@ -111,10 +112,12 @@ class GroupAdapter(
 
         fun bind() {
             allContactsTextView.text = "All Contacts"
+            allContactsTextView.textSize = 22F
             val contactAdapter = ContactAdapter()
             allContactsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(itemView.context)
                 adapter = contactAdapter
+                addItemDecoration(ContactItemDecorator(context))
             }
             val visibility = if (expandedGroupId == ALL_CONTACTS_ID) View.VISIBLE else View.GONE
             allContactsRecyclerView.visibility = visibility

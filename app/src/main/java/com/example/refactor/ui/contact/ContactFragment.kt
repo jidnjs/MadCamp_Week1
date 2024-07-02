@@ -38,15 +38,6 @@ class ContactFragment : Fragment() {
 
         setupRecyclerView()
 
-        myViewModel.allGroups.observe(viewLifecycleOwner, Observer {
-            Handler(Looper.getMainLooper()).postDelayed({
-                myViewModel.allGroups.observe(viewLifecycleOwner, Observer{ groups ->
-                    groupAdapter.submitList(groups)
-                    groupAdapter.notifyDataSetChanged()
-                })
-            }, 20) // 300 milliseconds delay
-        })
-
         binding.btnAddGroup.setOnClickListener {
             AddGroupDialogFragment().show(parentFragmentManager, "AddGroupDialog")
         }
@@ -68,5 +59,14 @@ class ContactFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = groupAdapter
         }
+
+        myViewModel.allGroups.observe(viewLifecycleOwner, Observer {
+            Handler(Looper.getMainLooper()).postDelayed({
+                myViewModel.allGroups.observe(viewLifecycleOwner, Observer{ groups ->
+                    groupAdapter.submitList(groups)
+                    groupAdapter.notifyDataSetChanged()
+                })
+            }, 20) // 300 milliseconds delay
+        })
     }
 }

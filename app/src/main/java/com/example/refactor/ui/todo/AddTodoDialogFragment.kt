@@ -95,6 +95,11 @@ class AddTodoDialogFragment : DialogFragment() {
                 return@setOnClickListener
             }
 
+            if(groupSpinner.selectedItemPosition == -1) {
+                Toast.makeText(requireContext(), "Please select group", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val calendar = Calendar.getInstance()
             calendar.time = defaultDate ?: Date()
             calendar.set(Calendar.HOUR_OF_DAY, timePicker.hour)
@@ -104,7 +109,6 @@ class AddTodoDialogFragment : DialogFragment() {
                 todoName = name,
                 todoContent = content,
                 todoDate = calendar.time,
-                forallDay = false,
                 groupId = allGroups[groupSpinner.selectedItemPosition].groupId
             )
 
