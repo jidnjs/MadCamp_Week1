@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.refactor.R
 import com.example.refactor.data.entities.Todo
-import com.example.refactor.ui.AddTodoDialogFragment
 import com.example.refactor.ui.adapters.TodoAdapter
 import java.util.*
 
@@ -19,9 +18,9 @@ class TodoFragment : Fragment() {
 
     private lateinit var calendarView: CalendarView
     private lateinit var addTodoButton: Button
-    private lateinit var recyclerViewTodos: RecyclerView
+    private lateinit var recyclerView: RecyclerView
     private lateinit var todoAdapter: TodoAdapter
-    private var selectedDate: Long = 0
+    private var selectedDate: Date? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,53 +30,28 @@ class TodoFragment : Fragment() {
 
         calendarView = view.findViewById(R.id.calendarView)
         addTodoButton = view.findViewById(R.id.addTodoButton)
-        recyclerViewTodos = view.findViewById(R.id.recyclerViewTodos)
+        recyclerView = view.findViewById(R.id.recyclerView)
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        todoAdapter = TodoAdapter(listOf())
+        recyclerView.adapter = todoAdapter
+
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            val calendar = Calendar.getInstance()
+            calendar.set(year, month, dayOfMonth)
+            selectedDate = calendar.time
+        }
+
+        addTodoButton.setOnClickListener {
+            val addTodoDialog = AddTodoDialogFragment.newInstance(selectedDate)
+            addTodoDialog.show(parentFragmentManager, "AddTodoDialogFragment")
+        }
 
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        todoAdapter = TodoAdapter()
-        recyclerViewTodos.layoutManager = LinearLayoutManager(context)
-        recyclerViewTodos.adapter = todoAdapter
-
-        // Add some dummy data to the adapter
-        val dummyTodos = listOf(
-            Todo(
-                todoName = "Sample Todo 1",
-                todoContent = "This is a sample todo",
-                todoDate = Date(),
-                groupId = 1
-            ),
-            Todo(
-                todoName = "Sample Todo 2",
-                todoContent = "This is another sample todo",
-                todoDate = Date(),
-                groupId = 1
-            )
-        )
-        todoAdapter.setTodos(dummyTodos)
-
-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val cal = Calendar.getInstance()
-            cal.set(year, month, dayOfMonth)
-            selectedDate = cal.timeInMillis
-        }
-
-        addTodoButton.setOnClickListener {
-            showAddTodoDialog()
-        }
-    }
-
     override fun onResume() {
         super.onResume()
-        calendarView.date = Calendar.getInstance().timeInMillis
-    }
-
-    private fun showAddTodoDialog() {
-        val dialog = AddTodoDialogFragment(selectedDate)
-        dialog.show(childFragmentManager, "AddTodoDialogFragment")
+        calendarView.date = System.currentTimeMillis()
     }
 }

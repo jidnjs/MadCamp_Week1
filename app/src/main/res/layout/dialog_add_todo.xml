@@ -1,54 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <EditText
         android:id="@+id/todoName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Todo Name"/>
+        android:hint="Todo Name" />
 
     <EditText
         android:id="@+id/todoContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/todoName"
-        android:hint="Todo Content"/>
+        android:hint="Todo Content" />
 
-    <TextView
+    <EditText
         android:id="@+id/todoDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/todoContent"
-        android:text="Selected Date"/>
+        android:hint="Todo Day"
+        android:focusable="false"
+        android:clickable="true" />
 
-    <EditText
-        android:id="@+id/todoHour"
+    <TimePicker
+        android:id="@+id/timePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/todoDay"
-        android:hint="Hour"/>
-
-    <EditText
-        android:id="@+id/todoMin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/todoHour"
-        android:hint="Minute"/>
+        android:timePickerMode="spinner"
+        android:visibility="visible"/>
 
     <Spinner
         android:id="@+id/groupSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/todoMin"/>
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/groupSpinner"
-        android:text="Save"/>
-
-</RelativeLayout>
+        android:text="Save" />
+</LinearLayout>

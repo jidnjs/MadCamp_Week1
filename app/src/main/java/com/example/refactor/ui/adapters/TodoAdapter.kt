@@ -8,9 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.refactor.R
 import com.example.refactor.data.entities.Todo
 
-class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
+class TodoAdapter(private var todoList: List<Todo>) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
 
-    private var todos: List<Todo> = listOf()
+    class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val todoName: TextView = itemView.findViewById(R.id.todoName)
+        val todoContent: TextView = itemView.findViewById(R.id.todoContent)
+        val todoDate: TextView = itemView.findViewById(R.id.todoDate)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_todo, parent, false)
@@ -18,22 +22,16 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        val todo = todos[position]
+        val todo = todoList[position]
         holder.todoName.text = todo.todoName
         holder.todoContent.text = todo.todoContent
+        holder.todoDate.text = todo.todoDate.toString() // Format date as needed
     }
 
-    override fun getItemCount(): Int {
-        return todos.size
-    }
+    override fun getItemCount() = todoList.size
 
-    fun setTodos(todos: List<Todo>) {
-        this.todos = todos
+    fun updateTodoList(newTodoList: List<Todo>) {
+        todoList = newTodoList
         notifyDataSetChanged()
-    }
-
-    class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val todoName: TextView = itemView.findViewById(R.id.todoName)
-        val todoContent: TextView = itemView.findViewById(R.id.todoContent)
     }
 }
