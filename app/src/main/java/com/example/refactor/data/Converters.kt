@@ -1,6 +1,7 @@
 package com.example.refactor.data
 
 import androidx.room.TypeConverter
+import java.util.Date
 
 class Converters {
     @TypeConverter
@@ -16,5 +17,15 @@ class Converters {
         return value.split(",").mapNotNull {
             it.toLongOrNull()
         }
+    }
+
+    @TypeConverter
+    fun toDate(value: Long): Date {
+        return Date(value)
+    }
+
+    @TypeConverter
+    fun fromDate(date: Date): Long {
+        return date.time.toLong()
     }
 }

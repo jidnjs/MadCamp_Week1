@@ -10,5 +10,5 @@ data class Contact(
     val contactName: String,
     val contactPhoneNumber: Long = -1,
 
-    val groupIdList: List<Long> = listOf<Long>() // Foreign key reference to Group
+    val groupIdList: List<Long> = listOf() // Foreign key reference to Group
 )

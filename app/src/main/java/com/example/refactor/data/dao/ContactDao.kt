@@ -22,4 +22,7 @@ interface ContactDao {
 
     @Query("SELECT * FROM Contact WHERE contactId IN (:contactIdList)")
     fun getContactListByContactIdList(contactIdList: List<Long>): LiveData<List<Contact>>
+
+    @Query("SELECT * FROM Contact WHERE contactId IN (:contactIdList)")
+    suspend fun getContactListByContactIdListSync(contactIdList: List<Long>): List<Contact>
 }

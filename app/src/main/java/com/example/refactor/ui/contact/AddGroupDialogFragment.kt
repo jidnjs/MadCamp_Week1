@@ -27,7 +27,7 @@ class AddGroupDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        myViewModel = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
 
         binding.btnAdd.setOnClickListener {
             val name = binding.editGroupName.text.toString()

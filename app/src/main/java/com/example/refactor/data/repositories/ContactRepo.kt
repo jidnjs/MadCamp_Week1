@@ -31,4 +31,8 @@ class ContactRepo(private val contactDao: ContactDao) {
     fun getContactListByContactIdList(contactIdList: List<Long>): LiveData<List<Contact>> {
         return contactDao.getContactListByContactIdList(contactIdList)
     }
+
+    suspend fun getContactListByContactIdListSync(contactIdList: List<Long>): List<Contact> {
+        return contactDao.getContactListByContactIdListSync(contactIdList)
+    }
 }

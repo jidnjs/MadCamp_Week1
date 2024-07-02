@@ -2,6 +2,7 @@ package com.example.refactor.ui.contact
 
 // Import necessary libraries
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,7 @@ class ContactDetailFragment : Fragment() {
     private lateinit var binding: FragmentContactDetailBinding
     private lateinit var myViewModel: MyViewModel
     private lateinit var currentContact: Contact
-    private var selectedGroups: List<Group> = emptyList()
+    private var selectedGroups: List<Long> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +35,7 @@ class ContactDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        myViewModel = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
 
         val contactId = arguments?.getLong("contactId") ?: return
 
@@ -47,7 +48,8 @@ class ContactDetailFragment : Fragment() {
 
         setFragmentResultListener("requestKey") { key, bundle ->
             @Suppress("UNCHECKED_CAST")
-            selectedGroups = bundle.getParcelableArrayList<Group>("selectedGroups") ?: emptyList()
+            selectedGroups = bundle.getLongArray("selectedGroupIdList")!!.toList()
+            Log.d("ContactDetailFrag", "selectedGroupIdList: $selectedGroups")
         }
 
         binding.groupSelection.setOnClickListener {
@@ -77,7 +79,7 @@ class ContactDetailFragment : Fragment() {
                 contactId = currentContact.contactId,
                 contactName = contactName,
                 contactPhoneNumber = contactPhone,
-                groupIdList = selectedGroups.map { it.groupId } // Update with selected groups
+                groupIdList = selectedGroups // Update with selected groups
             )
             myViewModel.updateContact(updatedContact)
             updateGroupsWithContact()
@@ -85,8 +87,12 @@ class ContactDetailFragment : Fragment() {
     }
 
     private fun updateGroupsWithContact() {
-        val updatedGroups = selectedGroups.map { it.copy(contactIdList = it.contactIdList + currentContact.contactId) }
-        myViewModel.updateGroups(updatedGroups)
+        myViewModel.updateGroupsWithContactId(currentContact.contactId, currentContact.groupIdList, selectedGroups)
+//        val updatedGroups = myViewModel.getGroupListByGroupIdListSync(selectedGroups).map {
+//            it.copy(contactIdList = it.contactIdList + currentContact.contactId)
+//        }
+//
+//        myViewModel.updateGroups(updatedGroups)
         Toast.makeText(requireContext(), "Contact and groups updated", Toast.LENGTH_SHORT).show()
     }
 }

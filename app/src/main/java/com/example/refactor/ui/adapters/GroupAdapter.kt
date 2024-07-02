@@ -1,5 +1,6 @@
 package com.example.refactor.ui.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,13 @@ class GroupAdapter(
     private val TYPE_GROUP = 1
 
     private var expandedGroupId: Long? = -1L
+
+    init{
+        myViewModel.newGroupId.observe(lifecycleOwner, Observer { newGroupId ->
+            expandedGroupId = newGroupId
+            notifyDataSetChanged()
+        })
+    }
 
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) TYPE_ALL_CONTACTS else TYPE_GROUP
@@ -83,7 +91,11 @@ class GroupAdapter(
             }
 
             binding.groupDetails.setOnClickListener {
-                it.findNavController().navigate(R.id.action_contactFragment_to_groupDetailFragment)
+                val bundle = Bundle().apply {
+                    putLong("groupId", group.groupId)
+                    putString("groupName", group.groupName)
+                }
+                it.findNavController().navigate(R.id.action_contactFragment_to_groupDetailFragment, bundle)
             }
         }
     }
@@ -123,8 +135,8 @@ class GroupAdapter(
             expandedGroupId = -1L
         } else {
             expandedGroupId = group.groupId
-            notifyDataSetChanged()
         }
+        notifyDataSetChanged()
     }
 }
 

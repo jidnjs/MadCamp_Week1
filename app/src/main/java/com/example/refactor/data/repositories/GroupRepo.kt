@@ -23,6 +23,10 @@ class GroupRepo(private val groupDao: GroupDao) {
         return groupDao.getGroupByGroupId(groupId)
     }
 
+    suspend fun getGroupByGroupIdSync(groupId: Long): Group? {
+        return groupDao.getGroupByGroupIdSync(groupId)
+    }
+
     fun getAllGroups(): LiveData<List<Group>> {
         return groupDao.getAllGroups()
     }

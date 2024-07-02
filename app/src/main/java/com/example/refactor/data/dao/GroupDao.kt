@@ -17,9 +17,15 @@ interface GroupDao {
     @Query("SELECT * FROM `Group` WHERE groupId = :groupId")
     fun getGroupByGroupId(groupId: Long): LiveData<Group?>
 
+    @Query("SELECT * FROM `Group` WHERE groupId = :groupId")
+    suspend fun getGroupByGroupIdSync(groupId: Long): Group?
+
     @Query("SELECT * FROM `Group`")
     fun getAllGroups(): LiveData<List<Group>>
 
     @Query("SELECT * FROM `Group` WHERE groupId IN (:groupIdList)")
     fun getGroupListByGroupIdList(groupIdList: List<Long>): LiveData<List<Group>>
+
+    @Query("SELECT * FROM `Group` WHERE groupId IN (:groupIdList)")
+    suspend fun getGroupListByGroupIdListSync(groupIdList: List<Long>): List<Group>
 }

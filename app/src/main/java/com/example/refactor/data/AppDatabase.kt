@@ -5,20 +5,19 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.refactor.data.dao.ContactDao
 import com.example.refactor.data.dao.GroupDao
+import com.example.refactor.data.dao.TodoDao
 import com.example.refactor.data.entities.Contact
 import com.example.refactor.data.entities.Group
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.refactor.data.entities.Todo
 
-@Database(entities = [Group::class, Contact::class], version = 1)
+@Database(entities = [Group::class, Contact::class, Todo::class], version = 2)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun groupDao(): GroupDao
     abstract fun contactDao(): ContactDao
+    abstract fun todoDao(): TodoDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -31,6 +30,7 @@ abstract class AppDatabase : RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
                 AppDatabase::class.java, "app_database")
+                .fallbackToDestructiveMigration()
                 .build()
     }
 }

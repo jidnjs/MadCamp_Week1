@@ -37,7 +37,7 @@ class GroupSelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        myViewModel = ViewModelProvider(requireActivity()).get(MyViewModel::class.java)
 
         contactId = arguments?.getLong("contactId") ?: 0L
 
@@ -54,8 +54,8 @@ class GroupSelectionFragment : Fragment() {
         }
 
         binding.btnDone.setOnClickListener {
-            val selectedGroups = getSelectedGroups()
-            returnSelectedGroupsToContactDetailFragment(selectedGroups)
+            val selectedGroupIdList = getSelectedGroupIdList()
+            returnSelectedGroupsToContactDetailFragment(selectedGroupIdList)
             findNavController().popBackStack()
         }
     }
@@ -66,19 +66,19 @@ class GroupSelectionFragment : Fragment() {
         listViewGroups.adapter = adapter
     }
 
-    private fun getSelectedGroups(): List<Group> {
-        val selectedGroups = mutableListOf<Group>()
+    private fun getSelectedGroupIdList(): List<Long> {
+        val selectedGroups = mutableListOf<Long>()
         for (i in 0 until listViewGroups.count) {
             if (listViewGroups.isItemChecked(i)) {
-                selectedGroups.add(allGroups[i])
+                selectedGroups.add(allGroups[i].groupId)
             }
         }
         return selectedGroups
     }
 
-    private fun returnSelectedGroupsToContactDetailFragment(selectedGroups: List<Group>) {
+    private fun returnSelectedGroupsToContactDetailFragment(selectedGroups: List<Long>) {
         val result = Bundle().apply {
-            putParcelableArrayList("selectedGroups", ArrayList(selectedGroups))
+            putLongArray("selectedGroupIdList", selectedGroups.toLongArray())
         }
         setFragmentResult("requestKey", result)
     }
