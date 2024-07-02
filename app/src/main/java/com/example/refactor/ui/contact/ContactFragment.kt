@@ -1,6 +1,8 @@
 package com.example.refactor.ui.contact
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,9 +38,13 @@ class ContactFragment : Fragment() {
 
         setupRecyclerView()
 
-        myViewModel.allGroups.observe(viewLifecycleOwner, Observer { groups ->
-            groupAdapter.submitList(groups)
-            groupAdapter.notifyDataSetChanged()
+        myViewModel.allGroups.observe(viewLifecycleOwner, Observer {
+            Handler(Looper.getMainLooper()).postDelayed({
+                myViewModel.allGroups.observe(viewLifecycleOwner, Observer{ groups ->
+                    groupAdapter.submitList(groups)
+                    groupAdapter.notifyDataSetChanged()
+                })
+            }, 20) // 300 milliseconds delay
         })
 
         binding.btnAddGroup.setOnClickListener {

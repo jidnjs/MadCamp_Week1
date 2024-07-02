@@ -46,6 +46,13 @@ class TodoFragment : Fragment() {
             })
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        binding.calendarView.setCurrentDate(CalendarDay.today())
+        binding.calendarView.setDateSelected(CalendarDay.today(), true)
+    }
+
     private fun updateCalendarWithTodos(calendarView: MaterialCalendarView, todos: List<Todo>) {
         calendarView.removeDecorators()
         todos.forEach { todo ->
