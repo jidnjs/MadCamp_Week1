@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/todoName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Todo Name"/>
+
+    <EditText
+        android:id="@+id/todoContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todoName"
+        android:hint="Todo Content"/>
+
+    <TextView
+        android:id="@+id/todoDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todoContent"
+        android:text="Selected Date"/>
+
+    <EditText
+        android:id="@+id/todoHour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todoDay"
+        android:hint="Hour"/>
+
+    <EditText
+        android:id="@+id/todoMin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todoHour"
+        android:hint="Minute"/>
+
+    <Spinner
+        android:id="@+id/groupSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todoMin"/>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/groupSpinner"
+        android:text="Save"/>
+
+</RelativeLayout>

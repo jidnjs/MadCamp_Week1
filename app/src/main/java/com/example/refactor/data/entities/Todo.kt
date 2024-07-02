@@ -8,8 +8,8 @@ data class Todo(
     @PrimaryKey(autoGenerate = true) val todoId: Long = 0,
     val todoName: String,
     val todoContent: String = "",
-    val todoStartDate: Date,
-    val todoEndDate: Date,
+    val todoDate: Date,
+    val forallDay: Boolean = false,
 
     val groupId: Long // group id
 )

@@ -1,78 +1,83 @@
 package com.example.refactor.ui.todo
 
-import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CalendarView
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.refactor.R
 import com.example.refactor.data.entities.Todo
-import com.example.refactor.databinding.FragmentTodoBinding
-import com.example.refactor.ui.MyViewModel
-import com.prolificinteractive.materialcalendarview.CalendarDay
-import com.prolificinteractive.materialcalendarview.DayViewDecorator
-import com.prolificinteractive.materialcalendarview.DayViewFacade
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
-import com.prolificinteractive.materialcalendarview.spans.DotSpan
-import java.util.Calendar
+import com.example.refactor.ui.AddTodoDialogFragment
+import com.example.refactor.ui.adapters.TodoAdapter
+import java.util.*
 
 class TodoFragment : Fragment() {
-    private lateinit var myViewModel: MyViewModel
-    private lateinit var binding: FragmentTodoBinding
+
+    private lateinit var calendarView: CalendarView
+    private lateinit var addTodoButton: Button
+    private lateinit var recyclerViewTodos: RecyclerView
+    private lateinit var todoAdapter: TodoAdapter
+    private var selectedDate: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTodoBinding.inflate(inflater, container, false)
-        return binding.root
+        val view = inflater.inflate(R.layout.fragment_todo, container, false)
+
+        calendarView = view.findViewById(R.id.calendarView)
+        addTodoButton = view.findViewById(R.id.addTodoButton)
+        recyclerViewTodos = view.findViewById(R.id.recyclerViewTodos)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        todoAdapter = TodoAdapter()
+        recyclerViewTodos.layoutManager = LinearLayoutManager(context)
+        recyclerViewTodos.adapter = todoAdapter
 
-        val calendarView: MaterialCalendarView = view.findViewById(R.id.calendarView)
+        // Add some dummy data to the adapter
+        val dummyTodos = listOf(
+            Todo(
+                todoName = "Sample Todo 1",
+                todoContent = "This is a sample todo",
+                todoDate = Date(),
+                groupId = 1
+            ),
+            Todo(
+                todoName = "Sample Todo 2",
+                todoContent = "This is another sample todo",
+                todoDate = Date(),
+                groupId = 1
+            )
+        )
+        todoAdapter.setTodos(dummyTodos)
 
-        myViewModel.allTodos.observe(viewLifecycleOwner, Observer { todos ->
-                updateCalendarWithTodos(calendarView, todos)
-            })
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            val cal = Calendar.getInstance()
+            cal.set(year, month, dayOfMonth)
+            selectedDate = cal.timeInMillis
+        }
+
+        addTodoButton.setOnClickListener {
+            showAddTodoDialog()
+        }
     }
 
     override fun onResume() {
         super.onResume()
-
-        binding.calendarView.setCurrentDate(CalendarDay.today())
-        binding.calendarView.setDateSelected(CalendarDay.today(), true)
+        calendarView.date = Calendar.getInstance().timeInMillis
     }
 
-    private fun updateCalendarWithTodos(calendarView: MaterialCalendarView, todos: List<Todo>) {
-        calendarView.removeDecorators()
-        todos.forEach { todo ->
-            val startDate = Calendar.getInstance().apply { time = todo.todoStartDate }
-            val endDate = Calendar.getInstance().apply { time = todo.todoEndDate }
-            calendarView.addDecorator(TodoDecorator(startDate, endDate))
-        }
-    }
-
-    class TodoDecorator(private val startDate: Calendar, private val endDate: Calendar) :
-        DayViewDecorator {
-        override fun shouldDecorate(day: CalendarDay): Boolean {
-            val calendarDay = Calendar.getInstance().apply {
-                set(day.year, day.month - 1, day.day)
-            }
-            return !calendarDay.before(startDate) && !calendarDay.after(endDate)
-        }
-
-        override fun decorate(view: DayViewFacade) {
-            view.addSpan(DotSpan(5f, Color.RED)) // Customize the decoration as needed
-        }
+    private fun showAddTodoDialog() {
+        val dialog = AddTodoDialogFragment(selectedDate)
+        dialog.show(childFragmentManager, "AddTodoDialogFragment")
     }
 }

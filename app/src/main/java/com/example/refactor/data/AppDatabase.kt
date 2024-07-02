@@ -12,7 +12,7 @@ import com.example.refactor.data.entities.Contact
 import com.example.refactor.data.entities.Group
 import com.example.refactor.data.entities.Todo
 
-@Database(entities = [Group::class, Contact::class, Todo::class], version = 2)
+@Database(entities = [Group::class, Contact::class, Todo::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun groupDao(): GroupDao
