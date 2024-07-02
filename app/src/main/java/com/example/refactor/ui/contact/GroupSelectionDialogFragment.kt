@@ -1,23 +1,21 @@
 package com.example.refactor.ui.contact
 
-// Import necessary libraries
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.refactor.R
 import com.example.refactor.data.entities.Contact
 import com.example.refactor.data.entities.Group
 import com.example.refactor.databinding.FragmentGroupSelectionBinding
 import com.example.refactor.ui.MyViewModel
 
-class GroupSelectionFragment : Fragment() {
+class GroupSelectionDialogFragment : DialogFragment() {
 
     private lateinit var binding: FragmentGroupSelectionBinding
     private lateinit var myViewModel: MyViewModel
@@ -56,7 +54,7 @@ class GroupSelectionFragment : Fragment() {
         binding.btnDone.setOnClickListener {
             val selectedGroupIdList = getSelectedGroupIdList()
             returnSelectedGroupsToContactDetailFragment(selectedGroupIdList)
-            findNavController().popBackStack()
+            dismiss()
         }
     }
 
@@ -80,17 +78,6 @@ class GroupSelectionFragment : Fragment() {
         val result = Bundle().apply {
             putLongArray("selectedGroupIdList", selectedGroups.toLongArray())
         }
-        setFragmentResult("requestKey", result)
+        requireActivity().supportFragmentManager.setFragmentResult("GSkey", result)
     }
-
-
-//    private fun updateContactWithSelectedGroups(selectedGroups: List<Group>) {
-//        val updatedContact = currentContact.copy(
-//            groupIdList = currentContact.groupIdList + selectedGroups.map { it.groupId }
-//        )
-//        val updatedGroups = selectedGroups.map { it.copy(contactIdList = it.contactIdList + currentContact.contactId)}
-//        myViewModel.updateContact(updatedContact)
-//        myViewModel.updateGroups(updatedGroups)
-//        Toast.makeText(requireContext(), "Contact added to groups", Toast.LENGTH_SHORT).show()
-//    }
 }

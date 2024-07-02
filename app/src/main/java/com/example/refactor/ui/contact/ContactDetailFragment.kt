@@ -1,6 +1,5 @@
 package com.example.refactor.ui.contact
 
-// Import necessary libraries
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -46,9 +45,8 @@ class ContactDetailFragment : Fragment() {
             }
         }
 
-        setFragmentResultListener("requestKey") { key, bundle ->
-            @Suppress("UNCHECKED_CAST")
-            selectedGroups = bundle.getLongArray("selectedGroupIdList")!!.toList()
+        requireActivity().supportFragmentManager.setFragmentResultListener("GSkey", viewLifecycleOwner) { key, bundle ->
+            selectedGroups = bundle.getLongArray("selectedGroupIdList")?.toList() ?: emptyList()
             Log.d("ContactDetailFrag", "selectedGroupIdList: $selectedGroups")
         }
 
@@ -56,7 +54,9 @@ class ContactDetailFragment : Fragment() {
             val bundle = Bundle().apply {
                 putLong("contactId", currentContact.contactId)
             }
-            findNavController().navigate(R.id.action_contactDetailFragment_to_groupSelectionFragment, bundle)
+            val dialog = GroupSelectionDialogFragment()
+            dialog.arguments = bundle
+            dialog.show(childFragmentManager, "GroupSelectionDialogFragment")
         }
 
         binding.btnSave.setOnClickListener {
@@ -88,11 +88,6 @@ class ContactDetailFragment : Fragment() {
 
     private fun updateGroupsWithContact() {
         myViewModel.updateGroupsWithContactId(currentContact.contactId, currentContact.groupIdList, selectedGroups)
-//        val updatedGroups = myViewModel.getGroupListByGroupIdListSync(selectedGroups).map {
-//            it.copy(contactIdList = it.contactIdList + currentContact.contactId)
-//        }
-//
-//        myViewModel.updateGroups(updatedGroups)
         Toast.makeText(requireContext(), "Contact and groups updated", Toast.LENGTH_SHORT).show()
     }
 }
