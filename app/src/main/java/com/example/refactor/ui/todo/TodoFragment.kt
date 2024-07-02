@@ -5,18 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.CalendarView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.refactor.R
-import com.example.refactor.data.entities.Todo
 import com.example.refactor.ui.adapters.TodoAdapter
-import java.util.*
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
+import java.util.Calendar
+import java.util.Date
 
 class TodoFragment : Fragment() {
 
-    private lateinit var calendarView: CalendarView
+    private lateinit var calendarView: MaterialCalendarView
     private lateinit var addTodoButton: Button
     private lateinit var recyclerView: RecyclerView
     private lateinit var todoAdapter: TodoAdapter
@@ -36,11 +38,11 @@ class TodoFragment : Fragment() {
         todoAdapter = TodoAdapter(listOf())
         recyclerView.adapter = todoAdapter
 
-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+        calendarView.setOnDateChangedListener(OnDateSelectedListener { _, date, _ ->
             val calendar = Calendar.getInstance()
-            calendar.set(year, month, dayOfMonth)
+            calendar.set(date.year, date.month - 1, date.day)
             selectedDate = calendar.time
-        }
+        })
 
         addTodoButton.setOnClickListener {
             val addTodoDialog = AddTodoDialogFragment.newInstance(selectedDate)
@@ -52,6 +54,10 @@ class TodoFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        calendarView.date = System.currentTimeMillis()
+        val today = CalendarDay.today()
+        calendarView.setSelectedDate(today)  // Ensure the calendar highlights today's date
+        calendarView.setCurrentDate(today)   // Ensure the calendar shows today's month
+        val calendar = Calendar.getInstance()
+        selectedDate = calendar.time
     }
 }

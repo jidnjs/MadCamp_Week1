@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Todo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp" />
 
     <EditText
         android:id="@+id/todoName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Todo Name" />
+        android:hint="Todo Name"
+        android:layout_marginBottom="8dp" />
 
     <EditText
         android:id="@+id/todoContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Todo Content" />
+        android:hint="Todo Content"
+        android:layout_marginBottom="8dp" />
 
     <EditText
         android:id="@+id/todoDay"
@@ -23,23 +33,27 @@
         android:layout_height="wrap_content"
         android:hint="Todo Day"
         android:focusable="false"
-        android:clickable="true" />
+        android:clickable="true"
+        android:layout_marginBottom="8dp" />
 
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
-        android:visibility="visible"/>
+        android:layout_marginBottom="16dp" />
 
     <Spinner
         android:id="@+id/groupSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save" />
+        android:text="Save"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
 </LinearLayout>

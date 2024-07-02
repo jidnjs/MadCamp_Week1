@@ -1,30 +1,26 @@
-package com.example.refactor.ui.contact
+package com.example.refactor.ui.group
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.refactor.R
-import com.example.refactor.databinding.FragmentGroupDetailBinding
+import com.example.refactor.databinding.FragmentGroupBinding
 import com.example.refactor.ui.MyViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.coroutineScope
 
-class GroupDetailFragment : Fragment() {
+class GroupFragment : Fragment() {
 
-    private lateinit var binding: FragmentGroupDetailBinding
+    private lateinit var binding: FragmentGroupBinding
     private lateinit var myViewModel: MyViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGroupDetailBinding.inflate(inflater, container, false)
+        binding = FragmentGroupBinding.inflate(inflater, container, false)
         return binding.root
     }
 

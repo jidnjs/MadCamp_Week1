@@ -1,6 +1,7 @@
 package com.example.refactor.ui.contact
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,23 +13,24 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.refactor.R
 import com.example.refactor.data.entities.Contact
 import com.example.refactor.data.entities.Group
-import com.example.refactor.databinding.FragmentGroupSelectionBinding
+import com.example.refactor.databinding.DialogGroupSelectionBinding
 import com.example.refactor.ui.MyViewModel
 
 class GroupSelectionDialogFragment : DialogFragment() {
 
-    private lateinit var binding: FragmentGroupSelectionBinding
+    private lateinit var binding: DialogGroupSelectionBinding
     private lateinit var myViewModel: MyViewModel
     private lateinit var allGroups: List<Group>
     private lateinit var listViewGroups: ListView
     private lateinit var currentContact: Contact
     private var contactId: Long = 0L
+    private lateinit var selectedGroupIds: List<Long>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGroupSelectionBinding.inflate(inflater, container, false)
+        binding = DialogGroupSelectionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,10 +46,11 @@ class GroupSelectionDialogFragment : DialogFragment() {
         myViewModel.getContactByContactId(contactId).observe(viewLifecycleOwner) { contact ->
             if (contact != null) {
                 currentContact = contact
+                selectedGroupIds = contact.groupIdList
                 myViewModel.allGroups.observe(viewLifecycleOwner) { groups ->
                     allGroups = groups
-                    setupGroupListView(groups)
                 }
+                setupGroupListView()
             }
         }
 
@@ -58,10 +61,21 @@ class GroupSelectionDialogFragment : DialogFragment() {
         }
     }
 
-    private fun setupGroupListView(groups: List<Group>) {
-        val groupNames = groups.map { it.groupName }
+    private fun setupGroupListView() {
+//        val groupNames = allGroups.map { it.groupName }
+//        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_multiple_choice, groupNames)
+//        listViewGroups.adapter = adapter
+        val groupNames = allGroups.map { it.groupName }
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_multiple_choice, groupNames)
         listViewGroups.adapter = adapter
+        listViewGroups.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+        // Check the items that are in the selectedGroups list
+        allGroups.forEachIndexed { index, group ->
+            if (selectedGroupIds.contains(group.groupId)) {
+                listViewGroups.setItemChecked(index, true)
+            }
+        }
     }
 
     private fun getSelectedGroupIdList(): List<Long> {

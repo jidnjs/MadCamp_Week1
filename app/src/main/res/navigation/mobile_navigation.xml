@@ -31,8 +31,8 @@
     <fragment
         android:id="@+id/navigation_group_detail"
         android:label="@string/title_group_detail"
-        android:name="com.example.refactor.ui.contact.GroupDetailFragment"
-        tools:layout="@layout/fragment_group_detail"/>
+        android:name="com.example.refactor.ui.group.GroupFragment"
+        tools:layout="@layout/fragment_group"/>
 
     <fragment
         android:id="@+id/navigation_dashboard"

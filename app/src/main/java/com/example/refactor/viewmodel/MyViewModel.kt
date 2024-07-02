@@ -61,6 +61,10 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun getGroupListByGroupIdList(groupIds: List<Long>): LiveData<List<Group>> {
+        return groupDao.getGroupListByGroupIdList(groupIds)
+    }
+
     // New method to get contacts by their IDs
     fun getContactListByContactIdList(contactIds: List<Long>): LiveData<List<Contact>> {
         return contactDao.getContactListByContactIdList(contactIds)
