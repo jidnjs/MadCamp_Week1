@@ -21,11 +21,14 @@ import com.example.refactor.data.entities.Contact
 import com.example.refactor.data.entities.Group
 import com.example.refactor.data.entities.Image
 import com.example.refactor.ui.MyViewModel
+import com.example.refactor.ui.contact.SelectGroupsDialogFragment
+import com.example.refactor.ui.gallery.ImageInfoDialogFragment
 import java.util.Date
 
 class GalleryAlbumAdapter(
     private val myViewModel: MyViewModel,
-    private val lifecycleOwner: LifecycleOwner
+    private val lifecycleOwner: LifecycleOwner,
+    private val fragmentManager: androidx.fragment.app.FragmentManager
 ) : ListAdapter<Image, GalleryAlbumAdapter.ImageViewHolder>(ImageDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val binding = ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -46,6 +49,12 @@ class GalleryAlbumAdapter(
 //            binding..text = contact.contactName
 //            binding.contactPhoneTextView.text = contact.contactPhoneNumber.toString()
             binding.imageView.setOnClickListener{
+                val bundle = Bundle().apply {
+                    putLong("imageId", image.imageId)
+                }
+                val dialog = ImageInfoDialogFragment()
+                dialog.arguments = bundle
+                dialog.show(fragmentManager, "ImageInfoDialogFragment")
             }
 //            binding.root.setOnClickListener {
 //                val bundle = Bundle().apply {

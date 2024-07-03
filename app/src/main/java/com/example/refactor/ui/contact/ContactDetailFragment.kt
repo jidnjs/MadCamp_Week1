@@ -65,21 +65,29 @@ class ContactDetailFragment : Fragment() {
     private fun bindContactDetails(contact: Contact) {
         binding.editContactName.setText(contact.contactName)
         binding.editContactPhone.setText(contact.contactPhoneNumber.toString())
+        binding.editContactEmail.setText(contact.contactEmail)
+        binding.editContactMemo.setText(contact.contactMemo)
         // Load other contact details and setup group selection if needed
     }
 
     private fun saveContactDetails() {
         val contactName = binding.editContactName.text.toString()
         val contactPhone = binding.editContactPhone.text.toString().toLongOrNull()
+        val contactEmail = binding.editContactEmail.text.toString()
+        val contactMemo = binding.editContactMemo.text.toString()
         if (contactName.isNotEmpty() && contactPhone != null) {
             val updatedContact = Contact(
                 contactId = currentContact.contactId,
                 contactName = contactName,
                 contactPhoneNumber = contactPhone,
+                contactEmail = contactEmail,
+                contactMemo = contactMemo,
                 groupIdList = selectedGroups // Update with selected groups
             )
             myViewModel.updateContact(updatedContact)
             updateGroupsWithContact()
+        } else {
+            Toast.makeText(requireContext(), "Please fill in all required fields", Toast.LENGTH_SHORT).show()
         }
     }
 

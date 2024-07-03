@@ -123,4 +123,8 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
             imageDao.insertImage(image)
         }
     }
+
+    fun getImageByImageId(imageId: Long): LiveData<Image?> {
+        return imageDao.getImageByImageId(imageId)
+    }
 }

@@ -6,21 +6,14 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        tools:ignore="MissingConstraints" />
-
     <EditText
         android:id="@+id/edit_contact_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contact Name"
         android:singleLine="true"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/edit_contact_phone"
@@ -29,20 +22,50 @@
         android:hint="Phone Number"
         android:inputType="phone"
         android:singleLine="true"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_contact_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_contact_memo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Memo"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
 
     <Button
         android:id="@+id/group_selection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Groups"
-        android:layout_marginTop="16dp" />
+        android:text="Select Groups"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_groups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

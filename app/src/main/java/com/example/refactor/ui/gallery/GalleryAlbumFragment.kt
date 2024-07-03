@@ -72,7 +72,7 @@ class GalleryAlbumFragment : Fragment()  {
 //        }
 
         private fun setupRecyclerView() {
-            galleryAlbumAdapter = GalleryAlbumAdapter(myViewModel, requireActivity())
+            galleryAlbumAdapter = GalleryAlbumAdapter(myViewModel, requireActivity(), childFragmentManager)
             binding.recyclerView.apply {
                 layoutManager = GridLayoutManager(context, 3)
                 adapter = galleryAlbumAdapter
