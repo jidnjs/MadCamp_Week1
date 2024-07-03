@@ -15,6 +15,7 @@ import com.example.refactor.R
 import com.example.refactor.data.entities.Group
 import com.example.refactor.data.entities.Todo
 import com.example.refactor.ui.MyViewModel
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
@@ -100,15 +101,14 @@ class AddTodoDialogFragment : DialogFragment() {
                 return@setOnClickListener
             }
 
-            val calendar = Calendar.getInstance()
-            calendar.time = defaultDate ?: Date()
-            calendar.set(Calendar.HOUR_OF_DAY, timePicker.hour)
-            calendar.set(Calendar.MINUTE, timePicker.minute)
+            val dateTimeString = "${todoDay.text.toString()} ${timePicker.hour}:${timePicker.minute}"
+            val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
+            val combinedDateTime: Date? = dateTimeFormat.parse(dateTimeString)
 
             val newTodo = Todo(
                 todoName = name,
                 todoContent = content,
-                todoDate = calendar.time,
+                todoDate = combinedDateTime!!,
                 groupId = allGroups[groupSpinner.selectedItemPosition].groupId
             )
 

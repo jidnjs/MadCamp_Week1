@@ -1,6 +1,8 @@
 package com.example.refactor.ui
 
 import android.app.Application
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -83,13 +85,6 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
     fun updateContact(contact: Contact) {
         viewModelScope.launch(Dispatchers.IO) {
             contactDao.updateContact(contact)
-        }
-    }
-
-    fun addContactToGroup(contact: Contact, group: Group) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val updatedContact = contact.copy(groupIdList = contact.groupIdList + group.groupId)
-            contactDao.updateContact(updatedContact)
         }
     }
 

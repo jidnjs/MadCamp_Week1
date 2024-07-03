@@ -1,6 +1,7 @@
 package com.example.refactor.ui.todo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -85,7 +86,7 @@ class TodoFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(binding.todoFragmentRecyclerView)
 
         myViewModel.allTodos.observe(viewLifecycleOwner, Observer { todos ->
-            todoAdapter.submitList(todos)
+            todoAdapter.submitList(todos.sortedBy { it.todoDate } )
             todoAdapter.notifyDataSetChanged()
         })
     }
