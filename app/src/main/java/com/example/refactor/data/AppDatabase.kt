@@ -14,7 +14,7 @@ import com.example.refactor.data.entities.Group
 import com.example.refactor.data.entities.Image
 import com.example.refactor.data.entities.Todo
 
-@Database(entities = [Group::class, Contact::class, Todo::class, Image::class], version = 7)
+@Database(entities = [Group::class, Contact::class, Todo::class, Image::class], version = 8)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun groupDao(): GroupDao

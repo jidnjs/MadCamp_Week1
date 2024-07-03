@@ -38,7 +38,7 @@ class GalleryFragment : Fragment() {
     private fun setupRecyclerView() {
         galleryAdapter = GalleryAdapter(emptyList(), myViewModel, requireActivity())
         binding.recyclerView.apply {
-            layoutManager = GridLayoutManager(context, 3)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = galleryAdapter
         }
 
