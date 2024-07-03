@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.refactor.R
 import com.example.refactor.data.entities.Group
 import com.example.refactor.databinding.FragmentGroupBinding
 import com.example.refactor.ui.MyViewModel
@@ -46,6 +48,13 @@ class GroupFragment : Fragment() {
                     setupRecyclerView(group)
                 }
             })
+
+            binding.gotoImageGroupButton.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putLong("groupId", groupId)
+                }
+                it.findNavController().navigate(R.id.action_groupFragment_to_galleryAlbumFragment, bundle)
+            }
         }
 
         binding.groupDetailsTitle.text = groupName

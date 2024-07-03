@@ -6,63 +6,64 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/group_details_title"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Group"
-        android:textSize="32sp"
-        android:textColor="@android:color/black"
-        android:fontFamily="sans-serif-medium"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        app:cardElevation="4dp"
+        android:padding="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/goto_contact_group_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Contacts"
-        android:textSize="18sp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="?attr/colorPrimary"
-        android:fontFamily="sans-serif"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/goto_image_group_button"
-        app:layout_constraintTop_toBottomOf="@id/group_details_title" />
-
-    <Button
-        android:id="@+id/goto_image_group_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Gallery"
-        android:textSize="18sp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="?attr/colorPrimary"
-        android:fontFamily="sans-serif"
-        app:layout_constraintLeft_toRightOf="@id/goto_contact_group_button"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/group_details_title" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/remove_group_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete Group"
-        android:textSize="18sp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@id/calendarView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/goto_image_group_button" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/group_details_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Group"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/montserrat_black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/goto_image_group_button" />
+
+            <ImageButton
+                android:id="@+id/goto_image_group_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/circle_background_mint"
+                android:padding="5dp"
+                android:layout_marginEnd="20dp"
+                android:src="@android:drawable/ic_menu_gallery"
+                app:layout_constraintEnd_toStartOf="@id/remove_group_button"
+                app:tint="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/remove_group_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/circle_background"
+                android:padding="5dp"
+                android:src="@android:drawable/ic_menu_delete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@android:color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
@@ -73,7 +74,7 @@
         app:mcv_showOtherDates="all"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/remove_group_button" />
+        app:layout_constraintTop_toBottomOf="@id/cardView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todo_list"
@@ -83,6 +84,6 @@
         app:layout_constraintTop_toBottomOf="@id/calendarView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

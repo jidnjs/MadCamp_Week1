@@ -49,7 +49,7 @@ class GalleryAdapter(
                 val bundle = Bundle().apply {
                     putLong("groupId", group.groupId)
                 }
-                it.findNavController().navigate(R.id.action_galleyFragment_to_galleyAlbumFragment, bundle)
+                it.findNavController().navigate(R.id.action_galleryFragment_to_galleryAlbumFragment, bundle)
             }
         }
     }

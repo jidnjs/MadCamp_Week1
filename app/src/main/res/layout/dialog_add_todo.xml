@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Add Todo"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/montserrat_black"
         android:paddingBottom="16dp" />
 
     <EditText
@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:hint="Todo Name"
         android:singleLine="true"
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginBottom="8dp" />
 
     <EditText
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:hint="Todo Content"
         android:singleLine="true"
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginBottom="8dp" />
 
     <EditText
@@ -36,6 +38,7 @@
         android:hint="Todo Day"
         android:focusable="false"
         android:clickable="true"
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginBottom="8dp" />
 
     <TimePicker
@@ -57,5 +60,6 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginBottom="16dp" />
 </LinearLayout>

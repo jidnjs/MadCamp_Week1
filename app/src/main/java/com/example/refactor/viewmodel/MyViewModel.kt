@@ -43,6 +43,10 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
             val groupObj: Group = groupDao.getGroupByGroupIdSync(groupId)!!
             val contactList: List<Contact> = contactDao.getContactListByContactIdListSync(groupObj.contactIdList)
             contactList.map { updateContact(it.copy(groupIdList = it.groupIdList - groupId)) }
+            val todoList: List<Todo> = todoDao.getAllTodosSync().filter{it.groupId == groupId}
+            todoList.map {deleteTodo(it)}
+            val imageList: List<Image> = imageDao.getAllImagesSync().filter{it.groupId == groupId}
+            imageList.map {deleteImage(it)}
             groupDao.deleteGroup(groupObj)
         }
     }
@@ -111,6 +115,12 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteTodo(todo: Todo) {
         viewModelScope.launch(Dispatchers.IO) {
             todoDao.deleteTodo(todo)
+        }
+    }
+
+    fun deleteImage(image: Image) {
+        viewModelScope.launch(Dispatchers.IO) {
+            imageDao.deleteImage(image)
         }
     }
 

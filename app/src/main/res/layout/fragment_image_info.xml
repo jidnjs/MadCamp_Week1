@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:textOff="Favorite: Off"
         android:textOn="Favorite: On"
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginBottom="8dp" />
 
     <TextView
@@ -27,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date:"
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginBottom="8dp" />
 
     <TextView
@@ -34,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location:"
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginBottom="8dp" />
 
     <TextView
@@ -41,5 +44,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Group: "
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginBottom="8dp" />
 </LinearLayout>

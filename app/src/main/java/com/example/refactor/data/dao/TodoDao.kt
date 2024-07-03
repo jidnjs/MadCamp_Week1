@@ -18,4 +18,7 @@ interface TodoDao {
 
     @Query("SELECT * FROM Todo WHERE todoId IN (:todoIdList)")
     fun getTodosByTodoIdList(todoIdList: List<Long>): LiveData<List<Todo>>
+
+    @Query("SELECT * FROM Todo")
+    suspend fun getAllTodosSync(): List<Todo>
 }

@@ -30,11 +30,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Group"
+            android:text="+ Group"
             android:textSize="16sp"
             app:cornerRadius="8dp"
             app:iconPadding="8dp"
             app:iconTint="@android:color/white"
+            android:fontFamily="@font/montserrat_light"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
         <com.google.android.material.button.MaterialButton
@@ -42,12 +43,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Contact"
+            android:text="+ Contact"
             android:textSize="16sp"
             android:layout_marginStart="16dp"
             app:cornerRadius="8dp"
             app:iconPadding="8dp"
             app:iconTint="@android:color/white"
+            android:fontFamily="@font/montserrat_light"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
     </LinearLayout>
 

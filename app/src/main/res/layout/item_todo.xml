@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/montserrat_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/tvTodoName" />
@@ -25,6 +26,7 @@
         android:textStyle="bold"
         android:layout_marginLeft="40dp"
         app:layout_constraintStart_toEndOf="@id/tvTodoTime"
+        android:fontFamily="@font/montserrat_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:textColor="?attr/colorSecondary"
         android:textSize="14sp"
+        android:fontFamily="@font/montserrat_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTodoTime" />
 
@@ -45,6 +48,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="?attr/colorSecondary"
+        android:fontFamily="@font/montserrat_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvTodoName" />
 
@@ -56,6 +60,7 @@
         android:textSize="12sp"
         android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/montserrat_light"
         app:layout_constraintStart_toStartOf="@id/tvTodoName"
         app:layout_constraintTop_toBottomOf="@id/tv_group_name" />
 

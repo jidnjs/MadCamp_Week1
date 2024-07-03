@@ -32,7 +32,11 @@
         android:id="@+id/navigation_group_detail"
         android:label="@string/title_group_detail"
         android:name="com.example.refactor.ui.group.GroupFragment"
-        tools:layout="@layout/fragment_group"/>
+        tools:layout="@layout/fragment_group">
+        <action
+            android:id="@+id/action_groupFragment_to_galleryAlbumFragment"
+            app:destination="@id/navigation_gallery_album" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_gallery_album"
@@ -43,10 +47,10 @@
     <fragment
         android:id="@+id/navigation_gallery"
         android:name="com.example.refactor.ui.gallery.GalleryFragment"
-        android:label="@string/title_todo"
+        android:label="@string/title_gallery"
         tools:layout="@layout/fragment_gallery" >
         <action
-            android:id="@+id/action_galleyFragment_to_galleyAlbumFragment"
+            android:id="@+id/action_galleryFragment_to_galleryAlbumFragment"
             app:destination="@id/navigation_gallery_album" />
     </fragment>
 

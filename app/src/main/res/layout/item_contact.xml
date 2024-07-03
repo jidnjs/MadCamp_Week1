@@ -18,7 +18,7 @@
         android:textSize="18sp"
         android:textColor="@android:color/black"
         android:layout_marginBottom="4dp"
-        android:fontFamily="sans-serif-medium" />
+        android:fontFamily="@font/montserrat_light" />
 
     <TextView
         android:id="@+id/contact_phone_text_view"
@@ -27,5 +27,5 @@
         android:text="Phone Number"
         android:textSize="16sp"
         android:textColor="@android:color/darker_gray"
-        android:fontFamily="sans-serif" />
+        android:fontFamily="@font/montserrat_light"/>
 </LinearLayout>

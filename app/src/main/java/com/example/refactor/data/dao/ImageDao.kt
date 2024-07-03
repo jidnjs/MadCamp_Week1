@@ -22,4 +22,7 @@ interface ImageDao {
 
     @Query("SELECT * FROM Image WHERE imageId IN (:imageIdList)")
     fun getImagesByImageIdList(imageIdList: List<Long>): LiveData<List<Image>>
+
+    @Query("SELECT * FROM Image")
+    suspend fun getAllImagesSync(): List<Image>
 }

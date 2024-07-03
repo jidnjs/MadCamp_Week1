@@ -11,6 +11,7 @@
         android:text="Select Groups"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:fontFamily="@font/montserrat_black"
         android:paddingBottom="8dp" />
 
     <ListView
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Done"
+        android:fontFamily="@font/montserrat_light"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp" />
 </LinearLayout>
