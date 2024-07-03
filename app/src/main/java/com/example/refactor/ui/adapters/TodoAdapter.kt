@@ -35,7 +35,7 @@ class TodoAdapter(
 
         fun bind(todo: Todo) {
             myViewModel.getGroupByGroupId(todo.groupId).observe(lifecycleOwner, Observer{ group ->
-                binding.tvGroupName.text = "${group!!.groupName}"
+                if(group!=null) binding.tvGroupName.text = "${group!!.groupName}"
             })
             binding.tvTodoName.text = todo.todoName
             val dayFormat = SimpleDateFormat("yyyy-MM-dd")
