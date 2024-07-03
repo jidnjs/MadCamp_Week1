@@ -26,7 +26,8 @@ About :
     - **그룹 Todo 모아보기** - 해당 그룹 탭의 하단에 캘린더와 그룹에 속한 todo만 디스플레이 됩니다.
     - **그룹 삭제 시 연관 데이터 자동 삭제** - 해당 그룹을 삭제한다면 연관된 모든 Todo, Album이 자동으로 삭제됩니다.
 - 이외에도 다른 그룹을 터치하면 열려있던 그룹이 자동으로 닫히거나 이미 속해 있는 그룹은 다시 체크하지 않아도 됩니다!
-![img.png](img.png)
+  
+![img.png](img.png)    ![img_3.png](img_3.png)
 
     Gallery Tab:
 
@@ -35,16 +36,16 @@ About :
 - **Group 앨범에 Image추가** - Group 활동을 하다가 필요한 자료는 간단히 버튼을 눌러 갤러리에서 불러올 수 있습니다.
 - **Image 상세정보** - 앨범에서 이미지를 클릭하면 이미지가 확대되며 위치, 날짜와 같은 상세정보를 확인할 수 있습니다.
     - **Favorites**를 표시하여 즐겨찾기 기능을 지원합니다.
+      
 ![img_1.png](img_1.png)
+
     Todo Tab:
 
 - **캘린더 날짜 선택 시 Add Todo 반영** - 훨씬 빠르고 편리하게 todo를 추가할 수 있습니다.
 - **Todo의 그룹화** - 새로운 todo를 만들 때 그룹을 추가하여 어떤 그룹의 활동인지 볼 수 있습니다.
 - **슬라이드 시 삭제** - 잘못 추가한 todo는 간단히 슬라이드하여 삭제할 수 있습니다.
+  
 ![img_2.png](img_2.png)
-
-    Group Tab:
-![img_3.png](img_3.png)
 
 Beta apk file :
     https://drive.google.com/file/d/1VQluddBxFkkSFkzc6wl1XXZtUNBA70rh/view?usp=sharing
