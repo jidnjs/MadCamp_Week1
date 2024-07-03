@@ -1,22 +1,19 @@
-프로젝트 이름 : 
+# Gachi 
+## Outline : 
 
-    Gachi
-
-프로젝트 설명 : 
-
-    당신의 협업을 전보다 간편하게,
-        
-    Gachi는 활동 별로 팀원들의 연락처, 이미지 자료, 그룹 일정을 보다 
-    쉽게 정리해주어 사용자가 협업에 몰두할 수 있도록 보조해주는 어플리케이션입니다!
-
-팀원 :
+**당신의 협업을 전보다 간편하게**,
     
-    https://github.com/jidnjs
-    https://github.com/diesel2580
+**Gachi**는 활동 별로 팀원들의 연락처, 이미지 자료, 그룹 일정을 보다 
+쉽게 정리해주어 사용자가 **협업**에 **몰두**할 수 있도록 보조해주는 어플리케이션입니다!
 
-About :
+## Team :
     
-    Contact Tab:
+**강지원** - https://github.com/jidnjs
+**정유경** - https://github.com/diesel2580
+
+## About :
+    
+### Contact Tab:
 
 - **모든 연락처** - 추가한 모든 연락처를 확인할 수 있는 그룹입니다.
 - **그룹 별 연락처** 디스플레이 - 그룹을 탭하면 해당 그룹에 속한 연락처만 볼 수 있습니다.
@@ -29,7 +26,7 @@ About :
   
 ![img.png](img.png)    ![img_3.png](img_3.png)
 
-    Gallery Tab:
+### Gallery Tab:
 
 - **Group별 앨범** - 각 그룹의 이름으로 된 앨범이 디스플레이 되어 있어 보다 직관적으로 접근할 수 있습니다.
 - **Image의 그룹화** - Group 앨범을 눌러 들어가게 되면 Image를 그룹 별로 모아서 볼 수 있습니다.
@@ -39,7 +36,7 @@ About :
       
 ![img_1.png](img_1.png)
 
-    Todo Tab:
+### Todo Tab:
 
 - **캘린더 날짜 선택 시 Add Todo 반영** - 훨씬 빠르고 편리하게 todo를 추가할 수 있습니다.
 - **Todo의 그룹화** - 새로운 todo를 만들 때 그룹을 추가하여 어떤 그룹의 활동인지 볼 수 있습니다.
@@ -47,5 +44,5 @@ About :
   
 ![img_2.png](img_2.png)
 
-Beta apk file :
+## Beta apk file :
     https://drive.google.com/file/d/1VQluddBxFkkSFkzc6wl1XXZtUNBA70rh/view?usp=sharing
