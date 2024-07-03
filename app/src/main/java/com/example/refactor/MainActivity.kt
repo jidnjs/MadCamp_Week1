@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_contact, R.id.navigation_dashboard, R.id.navigation_todo
+            R.id.navigation_contact, R.id.navigation_gallery, R.id.navigation_todo
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.navigation_dashboard -> {
-                    navController.navigate(R.id.navigation_dashboard)
+                R.id.navigation_gallery -> {
+                    navController.navigate(R.id.navigation_gallery)
                     true
                 }
 
