@@ -131,6 +131,23 @@
                     }
                 },
                 {
+                    "source": "/Users/jeong-yugyeong/AndroidStudioProjects/MadCamp_Week1_Yookyung1clone/MadCamp_Week1/app/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "88,146",
+                        "endColumns": "57,55",
+                        "endOffsets": "141,197"
+                    },
+                    "to": {
+                        "startLines": "1055,1056",
+                        "startColumns": "4,4",
+                        "startOffsets": "62593,62651",
+                        "endColumns": "57,55",
+                        "endOffsets": "62646,62702"
+                    }
+                },
+                {
                     "source": "/Users/jeong-yugyeong/.gradle/caches/transforms-4/0e8f56a4462d9bcd9831318b5965337a/transformed/constraintlayout-2.1.4/res/values/values.xml",
                     "from": {
                         "startLines": "2,9,10,15,16,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,42,43,44,45,55,63,64,65,70,71,76,81,82,83,88,89,94,95,100,101,102,108,109,110,115,121,122,123,124,130,131,132,133,136,139,142,143,146,149,150,151,152,153,156,159,160,161,162,168,173,176,179,180,181,186,187,188,191,194,195,198,201,204,207,208,209,212,215,216,221,222,228,233,236,239,240,241,242,243,244,245,246,247,248,249,250,266,272,273,274,275,276,283,289,290,291,294,299,300,308,309,310,311,312,313,314,315,324,325,326,332,333,339,343,344,345,346,347,356,360,361,380,566,694,700,704,874,1026,1039,1055,1080,1103,1106,1109,1112,1141,1168,1185,1271,1279,1292,1308,1312,1342,1355,1359,1369,1379,1423,1436,1440,1443,1459,1500,1535,1542,1559",
@@ -258,23 +275,6 @@
                     }
                 },
                 {
-                    "source": "/Users/jeong-yugyeong/AndroidStudioProjects/Week1_1_3/app/src/main/res/values/dimens.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "88,146",
-                        "endColumns": "57,55",
-                        "endOffsets": "141,197"
-                    },
-                    "to": {
-                        "startLines": "1055,1056",
-                        "startColumns": "4,4",
-                        "startOffsets": "62593,62651",
-                        "endColumns": "57,55",
-                        "endOffsets": "62646,62702"
-                    }
-                },
-                {
                     "source": "/Users/jeong-yugyeong/.gradle/caches/transforms-4/ee2550b043017be61dd213502b11e309/transformed/navigation-runtime-2.7.7/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,10,13",
@@ -330,59 +330,6 @@
                     }
                 },
                 {
-                    "source": "/Users/jeong-yugyeong/AndroidStudioProjects/Week1_1_3/app/src/main/res/values/themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "100",
-                        "endLines": "14",
-                        "endColumns": "12",
-                        "endOffsets": "802"
-                    },
-                    "to": {
-                        "startLines": "6424",
-                        "startColumns": "4",
-                        "startOffsets": "449020",
-                        "endLines": "6436",
-                        "endColumns": "12",
-                        "endOffsets": "449601"
-                    }
-                },
-                {
-                    "source": "/Users/jeong-yugyeong/AndroidStudioProjects/Week1_1_3/app/src/main/res/values/colors.xml",
-                    "from": {
-                        "startLines": "7,2,3,4,5,6,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "286,55,102,149,196,241,328",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "323,97,144,191,236,281,365"
-                    },
-                    "to": {
-                        "startLines": "649,956,957,958,969,970,973",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "33195,56053,56100,56147,56891,56936,57102",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "33232,56095,56142,56189,56931,56976,57139"
-                    }
-                },
-                {
-                    "source": "/Users/jeong-yugyeong/AndroidStudioProjects/Week1_1_3/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "1,8,5,3,7,6,4",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "16,383,235,119,337,287,173",
-                        "endColumns": "51,53,51,53,45,49,61",
-                        "endOffsets": "63,432,282,168,378,332,230"
-                    },
-                    "to": {
-                        "startLines": "2001,2021,2154,2155,2156,2157,2158",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "132118,134354,152860,152912,152966,153012,153062",
-                        "endColumns": "51,53,51,53,45,49,61",
-                        "endOffsets": "132165,134403,152907,152961,153007,153057,153119"
-                    }
-                },
-                {
                     "source": "/Users/jeong-yugyeong/.gradle/caches/transforms-4/516f43709704cbaa272a7ab83d07ad4c/transformed/cardview-1.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,35,36,37,38,45,47,50,7",
@@ -399,6 +346,23 @@
                         "endLines": "35,660,661,662,663,1058,1059,1060,2212,5562,5565,5568,10304",
                         "endColumns": "51,60,61,61,63,58,56,53,12,12,12,12,24",
                         "endOffsets": "1687,34065,34127,34189,34253,62826,62883,62937,156845,390775,390901,391029,678954"
+                    }
+                },
+                {
+                    "source": "/Users/jeong-yugyeong/AndroidStudioProjects/MadCamp_Week1_Yookyung1clone/MadCamp_Week1/app/src/main/res/values/colors.xml",
+                    "from": {
+                        "startLines": "7,2,3,4,5,6,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "286,55,102,149,196,241,328",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "323,97,144,191,236,281,365"
+                    },
+                    "to": {
+                        "startLines": "649,956,957,958,969,970,973",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "33195,56053,56100,56147,56891,56936,57102",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "33232,56095,56142,56189,56931,56976,57139"
                     }
                 },
                 {
@@ -421,6 +385,25 @@
                     }
                 },
                 {
+                    "source": "/Users/jeong-yugyeong/AndroidStudioProjects/MadCamp_Week1_Yookyung1clone/MadCamp_Week1/app/src/main/res/values/themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "100",
+                        "endLines": "14",
+                        "endColumns": "12",
+                        "endOffsets": "802"
+                    },
+                    "to": {
+                        "startLines": "6424",
+                        "startColumns": "4",
+                        "startOffsets": "449020",
+                        "endLines": "6436",
+                        "endColumns": "12",
+                        "endOffsets": "449601"
+                    }
+                },
+                {
                     "source": "/Users/jeong-yugyeong/.gradle/caches/transforms-4/7d325cf001be72c66ad169162fae504f/transformed/recyclerview-1.1.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
@@ -437,6 +420,23 @@
                         "endLines": "506,1120,1121,1122,1130,1131,1132,1826,12806",
                         "endColumns": "55,58,47,55,74,75,71,65,24",
                         "endOffsets": "25672,66864,66912,66968,67654,67730,67802,121482,774078"
+                    }
+                },
+                {
+                    "source": "/Users/jeong-yugyeong/AndroidStudioProjects/MadCamp_Week1_Yookyung1clone/MadCamp_Week1/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "1,8,5,3,7,6,4",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "16,383,235,119,337,287,173",
+                        "endColumns": "51,53,51,53,45,49,61",
+                        "endOffsets": "63,432,282,168,378,332,230"
+                    },
+                    "to": {
+                        "startLines": "2001,2021,2154,2155,2156,2157,2158",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "132118,134354,152860,152912,152966,153012,153062",
+                        "endColumns": "51,53,51,53,45,49,61",
+                        "endOffsets": "132165,134403,152907,152961,153007,153057,153119"
                     }
                 },
                 {

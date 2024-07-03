@@ -16,11 +16,19 @@ import com.example.madcamp_week1.adapter.ImageAdapter
 import java.io.IOException
 import android.app.Activity
 import android.content.ContentUris
+import android.graphics.drawable.Drawable
 import android.provider.DocumentsContract
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
+import android.view.WindowManager // changed: import WindowManager for adjusting dialog size
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class GalleryFragment : Fragment() {
 
@@ -48,14 +56,19 @@ class GalleryFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_gallery, container, false)
         recyclerView = root.findViewById(R.id.recyclerView)
 
+        // Initialize the adapter with the click listener
+        imageAdapter = ImageAdapter(requireContext(), images) { imagePath ->
+            showPopup(imagePath)
+        }
+
         //val images = loadImagesFromAssets()
-        imageAdapter = ImageAdapter(requireContext(), images)
+//        imageAdapter = ImageAdapter(requireContext(), images)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // 3 columns in the grid
         recyclerView.adapter = imageAdapter
 
         val fab: FloatingActionButton = root.findViewById(R.id.fab)
         fab.setOnClickListener {
-            openImagePicker()
+//            openImagePicker()
         }
 
         // Load images from both gallery and assets
@@ -79,12 +92,70 @@ class GalleryFragment : Fragment() {
         return root
     }
 
-    private fun openImagePicker() {
-        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-            addCategory(Intent.CATEGORY_OPENABLE)
-            type = "image/*"
+//    private fun openImagePicker() {
+//        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+//            addCategory(Intent.CATEGORY_OPENABLE)
+//            type = "image/*"
+//        }
+//        selectImageLauncher.launch(intent)
+//    }
+
+    // Show popup with larger image and name
+    private fun showPopup(imagePath: String) {
+        val dialogView = layoutInflater.inflate(R.layout.popup_image, null)
+        val imageView = dialogView.findViewById<ImageView>(R.id.popup_image_view)
+        val textView = dialogView.findViewById<TextView>(R.id.popup_image_name)
+//        val closeButton = dialogView.findViewById<Button>(R.id.close_button) // changed: reference to close button
+        val recyclerView = dialogView.findViewById<RecyclerView>(R.id.image_info_recycler_view)
+
+        // Initialize RecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = ImageInfoAdapter(DummyImageInfo.getDummyImageInfo()) // Use dummy data for now
+
+        // Load the image
+        if (imagePath.startsWith("file:///android_asset/")) {
+            try {
+                requireContext().assets.open(imagePath.removePrefix("file:///android_asset/")).use { inputStream ->
+                    val drawable = Drawable.createFromStream(inputStream, null)
+                    imageView.setImageDrawable(drawable)
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        } else {
+            val imageUri = Uri.parse(imagePath)
+            try {
+                requireContext().contentResolver.openInputStream(imageUri)?.use { inputStream ->
+                    val drawable = Drawable.createFromStream(inputStream, null)
+                    imageView.setImageDrawable(drawable)
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
         }
-        selectImageLauncher.launch(intent)
+
+        // Set the image name
+        textView.text = imagePath.substringAfterLast('/')
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .setPositiveButton(android.R.string.ok, null)
+            .create()
+
+        dialog.show()
+
+        // changed: make the dialog size larger
+        val dialogWindow = dialog.window
+        dialogWindow?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.MATCH_PARENT
+        )
+
+        // changed: set OnClickListener for close button
+//        closeButton.setOnClickListener {
+//            dialog.dismiss()
+//        }
+
     }
 
     //갤러리에서 불러오기

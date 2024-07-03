@@ -3276,6 +3276,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id close_icon
 id closest
 id collapseActionView
 id compress
@@ -3382,6 +3383,7 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id image_info_recycler_view
 id immediateStop
 id included
 id indeterminate
@@ -3522,6 +3524,8 @@ id pathRelative
 id peekHeight
 id percent
 id pin
+id popup_image_name
+id popup_image_view
 id position
 id postLayout
 id pressed
@@ -3629,6 +3633,7 @@ id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
 id text_notifications
+id text_view
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -3822,6 +3827,7 @@ layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_contact
 layout item_image
+layout item_image_info
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3879,6 +3885,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout popup_image
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

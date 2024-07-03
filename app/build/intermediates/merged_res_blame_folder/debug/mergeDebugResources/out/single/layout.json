@@ -1,38 +1,50 @@
 [
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/adapter_contacts.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/adapter_contacts.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_contacts.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/fragment_contacts.xml"
     },
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/activity_camera.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/activity_camera.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/item_image_info.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/item_image_info.xml"
     },
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/item_contact.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/item_contact.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_gallery.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/fragment_gallery.xml"
     },
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/activity_main.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/activity_main.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/activity_main.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/item_image.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/item_image.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/item_image.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/item_image.xml"
     },
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_notifications.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/fragment_notifications.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_notifications.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/fragment_notifications.xml"
     },
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_add_contact.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/fragment_add_contact.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/activity_camera.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/activity_camera.xml"
     },
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_gallery.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/fragment_gallery.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/popup_image.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/popup_image.xml"
     },
     {
-        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_contacts.xml",
-        "source": "com.example.madcamp_week1.app-main-50:/layout/fragment_contacts.xml"
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/fragment_add_contact.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/fragment_add_contact.xml"
+    },
+    {
+        "merged": "com.example.madcamp_week1.app-mergeDebugResources-47:/layout/item_image_info.xml",
+        "source": "com.example.madcamp_week1.app-main-50:/layout/item_image_info.xml"
+    },
+    {
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/item_contact.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/item_contact.xml"
+    },
+    {
+        "merged": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-mergeDebugResources-47:/layout/adapter_contacts.xml",
+        "source": "/Users/jeong-yugyeong/.gradle/daemon/8.7/com.example.madcamp_week1.app-main-50:/layout/adapter_contacts.xml"
     }
 ]

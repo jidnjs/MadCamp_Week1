@@ -12,11 +12,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.madcamp_week1.R
 import java.io.IOException
 
-class ImageAdapter(private val context: Context, private val images: List<String>) :
+class ImageAdapter(
+    private val context: Context,
+    private val images: List<String>,
+    private val onImageClick: (String) -> Unit
+) :
     RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        init {
+            itemView.setOnClickListener {
+                onImageClick(images[adapterPosition]) // Handle click event
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,18 +48,19 @@ class ImageAdapter(private val context: Context, private val images: List<String
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-        } else {
-            // Load from file system
-            val imageUri = Uri.parse(imagePath)
-            try {
-                context.contentResolver.openInputStream(imageUri)?.use { inputStream ->
-                    val drawable = Drawable.createFromStream(inputStream, null)
-                    holder.imageView.setImageDrawable(drawable)
-                }
-            } catch (e: IOException) {
-//                e.printStackTrace()
-            }
         }
+//        else {
+//            // Load from file system
+//            val imageUri = Uri.parse(imagePath)
+//            try {
+//                context.contentResolver.openInputStream(imageUri)?.use { inputStream ->
+//                    val drawable = Drawable.createFromStream(inputStream, null)
+//                    holder.imageView.setImageDrawable(drawable)
+//                }
+//            } catch (e: IOException) {
+////                e.printStackTrace()
+//            }
+//        }
     }
 //    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        val imagePath = images[position]
