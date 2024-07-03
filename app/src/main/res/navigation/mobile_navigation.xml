@@ -35,10 +35,20 @@
         tools:layout="@layout/fragment_group"/>
 
     <fragment
+        android:id="@+id/navigation_gallery_album"
+        android:name="com.example.refactor.ui.gallery.GalleryAlbumFragment"
+        android:label="@string/title_gallery"
+        tools:layout="@layout/fragment_gallery_album" />
+
+    <fragment
         android:id="@+id/navigation_gallery"
         android:name="com.example.refactor.ui.gallery.GalleryFragment"
-        android:label="@string/title_gallery"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_todo"
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_galleyFragment_to_galleyAlbumFragment"
+            app:destination="@id/navigation_gallery_album" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_todo"

@@ -1,6 +1,8 @@
 package com.example.refactor.data
 
+import android.net.Uri
 import androidx.room.TypeConverter
+import java.net.URL
 import java.util.Date
 
 class Converters {
@@ -27,5 +29,15 @@ class Converters {
     @TypeConverter
     fun fromDate(date: Date): Long {
         return date.time.toLong()
+    }
+
+    @TypeConverter
+    fun fromUri(uri: Uri): String {
+        return uri.toString()
+    }
+
+    @TypeConverter
+    fun toUri(uri: String): Uri {
+        return Uri.parse(uri)
     }
 }

@@ -1,12 +1,14 @@
 package com.example.refactor.data.dao
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.refactor.data.entities.Image
 
+@Dao
 interface ImageDao {
     @Insert suspend fun insertImage(image: Image)
     @Update suspend fun updateImage(image: Image)

@@ -11,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.refactor.data.AppDatabase
 import com.example.refactor.data.entities.Contact
 import com.example.refactor.data.entities.Group
+import com.example.refactor.data.entities.Image
 import com.example.refactor.data.entities.Todo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,10 +21,12 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
     private val contactDao = AppDatabase.getDatabase(application).contactDao()
     private val groupDao = AppDatabase.getDatabase(application).groupDao()
     private val todoDao = AppDatabase.getDatabase(application).todoDao()
+    private val imageDao = AppDatabase.getDatabase(application).imageDao()
 
     val allContacts: LiveData<List<Contact>> = contactDao.getAllContacts()
     val allGroups: LiveData<List<Group>> = groupDao.getAllGroups()
     val allTodos: LiveData<List<Todo>> = todoDao.getAllTodos()
+    val allImages: LiveData<List<Image>> = imageDao.getAllImages()
 
     private val _addedGroupId = MutableLiveData<Long>()
     val addedGroupId: LiveData<Long> get() = _addedGroupId
@@ -113,5 +116,11 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getTodosByTodoIdList(todoIdList: List<Long>): LiveData<List<Todo>> {
         return todoDao.getTodosByTodoIdList(todoIdList)
+    }
+
+    fun addImage(image: Image){
+        viewModelScope.launch(Dispatchers.IO) {
+            imageDao.insertImage(image)
+        }
     }
 }
