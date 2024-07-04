@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.refactor"
+    namespace = "com.example.madcamp_week1"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.refactor"
+        applicationId = "com.example.madcamp_week1"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

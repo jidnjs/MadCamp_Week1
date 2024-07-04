@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_contact"
         android:label="@string/title_contact"
-        android:name="com.example.refactor.ui.contact.ContactFragment"
+        android:name="com.example.madcamp_week1.ui.contact.ContactFragment"
         tools:layout="@layout/fragment_contact">
         <action
             android:id="@+id/action_contactFragment_to_contactDetailFragment"
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/navigation_contact_detail"
         android:label="@string/title_contact_detail"
-        android:name="com.example.refactor.ui.contact.ContactDetailFragment"
+        android:name="com.example.madcamp_week1.ui.contact.ContactDetailFragment"
         tools:layout="@layout/fragment_contact_detail">
         <argument
             android:name="contactId"
@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/navigation_group_detail"
         android:label="@string/title_group_detail"
-        android:name="com.example.refactor.ui.group.GroupFragment"
+        android:name="com.example.madcamp_week1.ui.group.GroupFragment"
         tools:layout="@layout/fragment_group">
         <action
             android:id="@+id/action_groupFragment_to_galleryAlbumFragment"
@@ -40,13 +40,13 @@
 
     <fragment
         android:id="@+id/navigation_gallery_album"
-        android:name="com.example.refactor.ui.gallery.GalleryAlbumFragment"
+        android:name="com.example.madcamp_week1.ui.gallery.GalleryAlbumFragment"
         android:label="@string/title_gallery"
         tools:layout="@layout/fragment_gallery_album" />
 
     <fragment
         android:id="@+id/navigation_gallery"
-        android:name="com.example.refactor.ui.gallery.GalleryFragment"
+        android:name="com.example.madcamp_week1.ui.gallery.GalleryFragment"
         android:label="@string/title_gallery"
         tools:layout="@layout/fragment_gallery" >
         <action
@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/navigation_todo"
-        android:name="com.example.refactor.ui.todo.TodoFragment"
+        android:name="com.example.madcamp_week1.ui.todo.TodoFragment"
         android:label="@string/title_todo"
         tools:layout="@layout/fragment_todo" />
 </navigation>

@@ -20,6 +20,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Refactor"
+rootProject.name = "MadCamp_Week1"
 include(":app")
  
