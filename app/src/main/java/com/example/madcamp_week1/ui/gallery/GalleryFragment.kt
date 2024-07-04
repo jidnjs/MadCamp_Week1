@@ -46,8 +46,6 @@ class GalleryFragment : Fragment() {
             galleryAdapter.submitList(groups)
             galleryAdapter.notifyDataSetChanged()
         })
-
-
 //
 //        myViewModel.allGroups.observe(viewLifecycleOwner, Observer {
 //            Handler(Looper.getMainLooper()).postDelayed({
